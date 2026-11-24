@@ -1,0 +1,1108 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#161b28"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ÉGALITÉ"><link rel="manifest" href="manifest.webmanifest"><title>ÉGALITÉ · Tabou & Pictionary</title><meta name="application-version" content="14"><style>
+:root{font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#1d1d1f;background:#f5f5f7;font-synthesis:none}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#f5f5f7}body{min-height:100dvh}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #80aaf5;outline-offset:3px}.hidden{display:none!important}
+.app{min-height:100dvh;max-width:1250px;padding:clamp(18px,2.6vw,34px);margin:auto;display:flex;flex-direction:column;gap:20px}.header{height:58px;min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:16px}.headerLeft{display:flex;align-items:center;gap:14px}.brand{font-size:clamp(19px,2.6vw,29px);font-weight:750;letter-spacing:.055em;color:#17181b}.iconBtn{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.9);border:1px solid #e5e6ea;border-radius:15px;color:#51545d;box-shadow:0 3px 12px rgba(20,20,30,.025)}.iconBtn:hover{background:#fff}.iconBtn:active{transform:scale(.96)}.stage{min-height:0;flex:1;display:flex;align-items:stretch;justify-content:center}.panel{width:100%;min-width:0;padding:clamp(24px,3.5vw,48px);border:1px solid #ececf0;border-radius:30px;background:#fff;box-shadow:0 18px 60px rgba(28,29,38,.045)}
+.homePanel{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:38px}.homeTitle{margin:0;font-size:clamp(45px,6vw,78px);line-height:1.05;letter-spacing:-.065em;font-weight:770}.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:23px;width:min(100%,900px)}.bigButton,.bigButton.pink{min-height:clamp(190px,27vh,275px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;background:linear-gradient(#fff,#fbfbfc);border:1px solid #e5e6eb;border-radius:27px;color:#25262b;box-shadow:0 9px 30px rgba(22,24,35,.055);font-size:clamp(25px,3.5vw,43px);font-weight:730;letter-spacing:-.045em;transition:transform .17s,box-shadow .17s}.bigButton:hover{transform:translateY(-3px);box-shadow:0 15px 34px rgba(22,24,35,.075)}.bigButton:active{transform:scale(.985)}.modeIcon{width:60px;height:60px;stroke-width:1.5;color:#4a4c55}
+.gamePanel{display:grid;grid-template-columns:minmax(0,1fr) minmax(205px,26%);grid-template-rows:auto minmax(0,1fr);gap:22px;min-height:520px}.gameToolbar{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:18px;min-width:0;border-bottom:1px solid #eff0f2;padding-bottom:16px}.gameTitle{border:0;background:transparent;padding:5px 0;text-align:left;color:#22232a;font-size:clamp(23px,2.8vw,36px);font-weight:750;letter-spacing:-.045em}.info{display:flex;gap:10px;align-items:center;min-width:0}.stat{background:#f6f7f9;color:#737781;border:1px solid #f0f0f2;border-radius:11px;padding:10px 12px;font-size:clamp(11px,1.1vw,14px);font-weight:590;white-space:nowrap}.clockGroup{display:flex;align-items:center;gap:11px;border-left:1px solid #e6e7ea;padding-left:16px}.clockLabel{font-size:10px;font-weight:700;letter-spacing:.17em;color:#9699a3}.timer{font-size:clamp(30px,3.6vw,46px);font-weight:680;line-height:1;letter-spacing:-.065em;color:#202127;font-variant-numeric:tabular-nums;white-space:nowrap}.timer.urgent{color:#b7434d}.stopRound{width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;background:#f6f7f9;color:#777b83;border:1px solid #e8e9ed;border-radius:14px}.stopRound svg{stroke:#b44c54}.stopRound span{display:none}.stopRound:hover{background:#f0f0f3}.playzone{display:flex;position:relative;align-items:stretch;justify-content:stretch;min-height:340px;touch-action:none;user-select:none}.playzone.tapOnly{touch-action:auto;user-select:auto}.card,.card.pic{width:100%;min-height:340px;border:1px solid #e9eaee;border-radius:25px;box-shadow:0 13px 38px rgba(21,23,32,.065);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(18px,2.6vw,38px);text-align:center;transition:transform .16s,opacity .16s;overflow:hidden}.word{margin:0 0 23px;font-size:clamp(35px,4.6vw,64px);line-height:1.1;color:#191a1f;letter-spacing:-.055em;font-weight:760;overflow-wrap:anywhere}.card.pic .word{margin:0;font-size:clamp(45px,6vw,86px)}.forbidden{display:flex;flex-direction:column;align-items:stretch;gap:0;width:min(100%,465px)}.forbidden span{padding:9px 6px;color:#666a73;font-size:clamp(16px,1.85vw,22px);font-weight:500;line-height:1.22;border-bottom:1px solid #eff0f2}.forbidden span:last-child{border-bottom:0}
+.gameSide{display:flex;flex-direction:column;justify-content:center;gap:15px}.scoreBox{padding:23px 15px;text-align:center;background:#f7f8fa;border:1px solid #ebecf0;border-radius:22px;color:#8e929b;font-size:12px;font-weight:700;letter-spacing:.17em}.scoreBox strong{display:block;margin:7px auto 14px;font-size:clamp(44px,5vw,68px);font-weight:750;letter-spacing:-.065em;line-height:1;color:#24252b}.timeTrack{height:5px;overflow:hidden;background:#e8e9ee;border-radius:5px}.timeFill{width:100%;height:100%;background:#818a96;transition:width .1s linear}.control{min-height:100px;padding:18px 10px;border-radius:20px;border:1px solid #e4e7eb;box-shadow:0 6px 20px rgba(23,25,35,.035);font-size:clamp(18px,2.3vw,27px);font-weight:720;letter-spacing:-.025em}.control.yes{background:#ecf7f0;color:#286843;border-color:#dcefe3}.control.no{background:#fcf2f2;color:#a04c4c;border-color:#f4e4e4}.control:active{transform:scale(.975)}
+.introOverlay{position:absolute;inset:-1px;z-index:2;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:24px;padding:18px}.introInner{width:min(100%,560px);text-align:center}.introInner h2{font-size:clamp(32px,4vw,51px);font-weight:750;letter-spacing:-.05em;color:#26272b;margin:0 0 24px}.nameInput,.field{width:100%;background:#fff;border:1px solid #dfe1e7;border-radius:15px;color:#292a30;padding:13px 16px;font-size:18px}.nameInput{margin-bottom:12px;text-align:center}.playerOptions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:8px 0}.playerOptions button{border:1px solid #e5e7eb;background:#f5f6f8;padding:9px 12px;border-radius:11px;color:#3d4149;font-weight:600}.error{min-height:21px;color:#b43d49;font-size:13px}.primary,.secondary{border-radius:14px;border:1px solid #dfe1e6;padding:13px 22px;min-height:50px;font-size:15px;font-weight:650}.primary{background:#24252a;border-color:#24252a;color:#fff}.secondary{background:#f6f7f9;color:#36383f}.primary:active,.secondary:active{transform:scale(.985)}#beginBtn{min-width:180px;margin-top:9px}
+#finish{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;max-height:100%;overflow:auto;text-align:center}.resultTitle{margin:0;color:#292a30;font-size:clamp(26px,3.5vw,42px);font-weight:720;letter-spacing:-.045em}#finishName{margin-top:7px;color:#90939d;font-size:15px;font-weight:540!important}.resultScore{color:#1e1f24;font-size:clamp(75px,10vw,123px);font-weight:760;letter-spacing:-.08em;line-height:1.12;margin-top:7px}#finish>div[style*="text-align:center"]{font-size:11px;font-weight:700!important;letter-spacing:.2em;color:#9a9da5}.summary{display:grid;grid-template-columns:repeat(2,minmax(135px,230px));gap:16px;width:min(100%,490px);margin:20px 0 9px}.resultTile{min-height:107px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;background:#f8f9fa;border:1px solid #e8e9ed;border-radius:20px;color:#545760;transition:background .16s}.resultTile:hover,.resultTile[aria-expanded="true"]{background:#edf0f4}.resultTile strong{font-size:40px;line-height:1;font-weight:740;letter-spacing:-.05em;color:#25262b}.resultTile span{font-size:12px;font-weight:680;letter-spacing:.12em}.resultTile svg{color:#a5a7b0}.resultTile[aria-expanded="true"] svg{transform:rotate(180deg)}.resultDetail{width:min(100%,520px);max-height:min(210px,26vh);display:flex;flex-direction:column;border:1px solid #e9eaed;border-radius:17px;overflow:hidden;background:#fff;text-align:left}.detailHead{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #eff0f2}.detailHead h3{margin:0;font-size:15px;color:#3c3f47}.detailClose{background:none;border:0;color:#878b94;font-size:28px;line-height:1}.detailWords{overflow:auto;padding:0 17px}.detailWord{display:flex;gap:18px;border-bottom:1px solid #f0f1f3;padding:11px 0;color:#2c2e35;font-size:15px}.detailWord:last-child{border-bottom:0}.detailWord span:first-child{min-width:22px;font-size:12px;color:#a1a5af}.buttons{display:flex;flex-wrap:wrap;gap:11px;justify-content:center}.finishActions{margin:17px 0 0}.finishActions button{min-width:154px}
+.tableWrap{max-height:55vh;overflow:auto;border:1px solid #e9eaed;border-radius:15px;background:#fff}.rankingRow{display:grid;grid-template-columns:58px 1fr 92px;gap:9px;padding:14px 15px;border-bottom:1px solid #f0f1f3;font-weight:570}.rankingRow:first-child{background:#f7f8fa}.adminPanel h2{margin:0 0 21px;font-size:35px;letter-spacing:-.04em}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:19px}.tabs button{background:#f7f8fa;border:1px solid #e5e6eb;padding:11px 17px;border-radius:11px;color:#535762;font-weight:620}.tabs button.selected{background:#24252b;color:#fff;border-color:#24252b}.adminLayout{display:grid;grid-template-columns:43% minmax(0,1fr);gap:20px}.adminList{max-height:55vh;overflow:auto;border:1px solid #ebecf0;border-radius:14px}.adminItem{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid #f1f2f4}.adminItem.active{background:#f2f3f6}.adminItem button{flex:1;border:0;background:transparent;text-align:left;color:#32343b;font-weight:600}.adminForm{display:flex;flex-direction:column;gap:10px}.adminForm label{font-size:13px;font-weight:680;color:#666a73}.adminForm input{font-size:16px}.adminActions{display:flex;gap:10px;flex-wrap:wrap}.small{font-size:13px}.muted{color:#8d919b}.delete{color:#ab4a4d;background:#fdf2f2}.lockScreen{max-width:470px;margin:auto;text-align:center}.lockScreen h2{font-size:38px}.lockScreen input{margin:10px 0}.playerRegistry{max-height:32vh}.footer{display:none}
+@media(max-width:800px),(orientation:portrait){.app{gap:13px;padding:13px}.panel{padding:19px;border-radius:24px}.gamePanel{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto;gap:13px}.gameToolbar{grid-column:1/-1;flex-wrap:wrap}.info{flex-wrap:wrap;justify-content:flex-end}.gameSide{display:grid;grid-template-columns:1fr 1fr;gap:11px}.scoreBox{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding:12px 18px}.scoreBox strong{margin:0;font-size:40px}.timeTrack{width:28%}.control{min-height:66px}.playzone,.card{min-height:310px}.adminLayout{grid-template-columns:1fr}.adminList{max-height:25vh}}
+@media(max-width:570px){.modeGrid{grid-template-columns:1fr;gap:13px}.homePanel{gap:24px}.bigButton,.bigButton.pink{min-height:132px;flex-direction:row;gap:17px;font-size:28px}.modeIcon{width:40px;height:40px}.clockLabel{display:none}.clockGroup{gap:6px;padding-left:8px}.stat{padding:6px 7px;font-size:11px}.gameToolbar{gap:6px}.timer{font-size:32px}.word{font-size:36px}.forbidden span{font-size:16px;padding:7px}.summary{gap:9px}.resultTile{min-height:95px}.resultDetail{max-height:34vh}}
+@media(max-height:690px) and (orientation:landscape){.app{padding:8px 16px;gap:7px}.header{height:40px;min-height:40px}.iconBtn{height:39px;width:39px;border-radius:12px}.brand{font-size:22px}.panel{padding:13px 21px;border-radius:20px}.homePanel{gap:14px}.homeTitle{font-size:45px}.bigButton,.bigButton.pink{min-height:140px}.modeIcon{height:44px;width:44px}.gamePanel{gap:9px;min-height:0}.gameToolbar{min-height:34px;padding-bottom:7px}.gameTitle{font-size:24px}.stat{padding:6px 9px}.timer{font-size:30px}.clockGroup{gap:7px}.stopRound{height:36px;width:36px}.playzone,.card{min-height:0}.card{padding:8px 16px}.word{font-size:clamp(30px,3.5vw,44px);margin-bottom:9px}.forbidden span{padding:4px 5px;font-size:clamp(14px,1.55vw,18px)}.gameSide{gap:8px}.scoreBox{padding:10px}.scoreBox strong{font-size:36px;margin:4px auto 8px}.control{min-height:55px;padding:9px;font-size:18px}.resultTitle{font-size:27px}.resultScore{font-size:65px;margin:0}.summary{margin:8px 0 2px}.resultTile{min-height:68px;gap:2px}.resultTile strong{font-size:30px}.resultDetail{max-height:112px}.detailWord{padding:5px 0}.finishActions{margin:3px}}
+
+
+
+/* ÉGALITÉ | LOOP-inspired charcoal / signal yellow visual system */
+:root{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;--night:#141619;--night2:#202327;--yellow:#f7da42;--yellow-deep:#e2c330;--ivory:#f6f5ef;--line:#e4e4de;--muted:#81848d;--ink:#181a1d;color:var(--ink);background:var(--night)}
+*{-webkit-tap-highlight-color:transparent}
+html,body{background:var(--night)!important;color:var(--ink)}
+body{background-image:radial-gradient(ellipse 850px 680px at 98% -20%,#303133 0%,transparent 65%),radial-gradient(ellipse 700px 560px at -10% 115%,#23262a 0%,transparent 75%)}
+.app{max-width:1320px;padding:clamp(18px,2.6vw,32px);gap:16px;min-height:100dvh}
+.header{height:52px;min-height:52px;padding:0 5px}
+.brand{font-size:20px;font-weight:820;letter-spacing:.21em;color:#f8f7f2}
+.headerLeft{gap:16px}
+.iconBtn{height:44px;width:44px;border:1px solid #404348;background:#25282c;border-radius:14px;color:#f3f2ec;box-shadow:none}
+.iconBtn:hover{background:#33363b}
+.stage{flex:1;min-height:0;display:flex;align-items:stretch}
+.panel{border:none;border-radius:27px;background:var(--ivory);box-shadow:0 22px 72px rgba(0,0,0,.22);padding:clamp(22px,3vw,40px)}
+/* HOME: a distinct, isolated scene */
+.homePanel{width:100%;background:transparent;border:none;box-shadow:none;justify-content:center;align-items:center;text-align:center;gap:clamp(24px,4vh,42px);padding:24px 10px}
+.homeTitle{color:#f6f5ef;font-size:clamp(55px,8vw,112px);font-weight:870;letter-spacing:-.095em;line-height:1.03;margin:0}
+.modeGrid{width:min(100%,1010px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.bigButton,.bigButton.pink{background:#f7da42;color:#17191c;min-height:clamp(230px,34vh,320px);border:0;border-radius:25px;box-shadow:0 18px 46px rgba(0,0,0,.2);padding:clamp(25px,3.2vw,42px);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:0;font-size:clamp(30px,4vw,53px);font-weight:860;letter-spacing:-.055em;position:relative;transition:transform .18s,box-shadow .18s}
+.bigButton.pink{background:#f2f1eb}
+.bigButton::after{content:'↗';position:absolute;top:26px;right:28px;font-size:29px;font-weight:350;opacity:.62}
+.bigButton:hover{transform:translateY(-4px);box-shadow:0 25px 56px rgba(0,0,0,.26)}
+.bigButton:active{transform:scale(.985)}
+.bigButton span{text-align:left}
+.modeIcon{width:67px;height:67px;stroke-width:1.4;color:#292b2d}
+/* GAME: main card above a compact command dock, never side columns */
+.gamePanel{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;gap:14px;min-height:0;overflow:hidden;background:#f7f6f0;padding:clamp(20px,2.8vw,34px)}
+.gameToolbar{grid-column:1;grid-row:1;display:flex;justify-content:space-between;align-items:center;gap:18px;border:0;padding:0;min-height:58px}
+.gameTitle{font-size:clamp(24px,3.1vw,39px);font-weight:850;color:#151719;letter-spacing:-.055em;padding:0}
+.info{display:flex;align-items:center;gap:13px;flex-wrap:nowrap}
+.stat{background:transparent;border:0;color:#818289;font-size:clamp(12px,1.2vw,15px);font-weight:720;padding:9px 5px;white-space:nowrap}
+.clockGroup{display:flex;align-items:center;gap:14px;padding:7px 8px 7px 18px;background:#1c1e21;border:0;border-radius:17px}
+.clockLabel{display:none}
+.timer{font-size:clamp(31px,3.6vw,48px);color:#f8f6ec;font-weight:800;letter-spacing:-.075em;line-height:1.1;font-variant-numeric:tabular-nums}
+.timer.urgent{color:#f7da42}
+.stopRound{width:auto;height:47px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:12px;background:#34363b;color:#f5f4ee}
+.stopRound svg{stroke:#f7da42}
+.stopRound span{display:inline;font-weight:680;font-size:14px}
+.playzone{grid-row:2;grid-column:1;min-height:0;display:flex;align-items:stretch;justify-content:stretch}
+.card,.card.pic{width:100%;min-height:0;border-radius:25px;background:#fff;border:1px solid #e9e9e3;box-shadow:0 12px 33px rgba(25,27,30,.07);padding:clamp(20px,2.8vw,35px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.word{color:#151719;font-weight:870;font-size:clamp(34px,4.4vw,61px);line-height:1.06;letter-spacing:-.066em;margin:0 0 17px;overflow-wrap:anywhere}
+.card.pic .word{font-size:clamp(45px,6.1vw,88px);margin:0}
+.forbidden{display:flex;flex-direction:column;align-items:stretch;width:min(100%,580px);gap:0}
+.forbidden span{padding:clamp(5px,.9vh,10px) 10px;text-align:center;color:#595b60;border-bottom:1px solid #eeeeeb;font-size:clamp(17px,1.85vw,24px);font-weight:540;line-height:1.12}
+.forbidden span:last-child{border-bottom:0}
+.gameSide{grid-row:3;grid-column:1;display:grid;grid-template-columns:minmax(120px,.82fr) minmax(0,1.8fr) minmax(0,1.8fr);gap:12px;align-items:stretch}
+.scoreBox{background:#1f2125;border:0;border-radius:19px;padding:13px 15px;box-shadow:none;color:#acafb3;font-size:11px;font-weight:750;letter-spacing:.12em;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.scoreBox strong{color:var(--yellow);font-size:clamp(34px,4vw,52px);font-weight:840;line-height:1.02;margin:4px auto 8px;letter-spacing:-.07em}
+.timeTrack{height:4px;background:#414449;border-radius:6px;overflow:hidden}
+.timeFill{height:100%;background:var(--yellow)}
+.control{min-height:100px;border:0;border-radius:19px;font-size:clamp(19px,2.5vw,28px);font-weight:820;letter-spacing:-.045em;box-shadow:none}
+.control.yes{background:var(--yellow);color:#17181a;border:0}
+.control.no{background:#e8e8e2;color:#383b40;border:0}
+.control:active{transform:scale(.98)}
+/* NAME ENTRY */
+.introOverlay{background:#fff;border-radius:24px;padding:18px;inset:0}
+.introInner h2{font-size:clamp(33px,4vw,50px);letter-spacing:-.065em;font-weight:840;color:#16181b}
+.nameInput,.field{background:#fff;border:1px solid #dcdedc;border-radius:14px;color:#1d1f21}
+.playerOptions button{background:#f3f2ec;border:1px solid #e7e7e1;color:#323438;border-radius:11px}
+.primary,.secondary{min-height:52px;border-radius:13px;font-weight:720;padding:12px 22px}
+.primary{background:var(--yellow);color:#1b1c1d;border:0}
+.secondary{background:#efeee8;color:#323436;border:1px solid #e5e5df}
+/* FINISH: dedicated full-screen results */
+#finish{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;max-height:100%;overflow:auto;text-align:center}
+.resultTitle{color:#191b1e;font-size:clamp(25px,3vw,39px);font-weight:840;letter-spacing:-.065em}
+#finishName{font-size:15px;color:#74767b;font-weight:560}
+.resultScore{color:#17191b;font-size:clamp(74px,9.8vw,128px);font-weight:860;letter-spacing:-.095em;line-height:1.1;margin-top:3px}
+#finish>div[style*="text-align:center"]{font-size:11px;font-weight:700;letter-spacing:.16em;color:#85878a}
+.summary{display:grid;grid-template-columns:repeat(2,minmax(140px,240px));gap:14px;margin:13px 0 7px;width:min(100%,520px)}
+.resultTile{min-height:111px;background:#fff;border:1px solid #e7e6e0;border-radius:19px;color:#3e4145;box-shadow:0 6px 18px rgba(0,0,0,.045)}
+.resultTile strong{font-size:44px;color:#18191c;font-weight:830}
+.resultTile span{font-size:12px;letter-spacing:.12em;font-weight:750}
+.resultTile[aria-expanded="true"]{background:#f8eaa5}
+.resultDetail{width:min(100%,520px);border-radius:17px;border:1px solid #e5e5df;background:#fff}
+.finishActions{margin-top:13px;gap:12px}
+.finishActions button{min-width:150px}
+/* RECORDS + ADMIN retain the same underlying functions and layout */
+.tableWrap,.adminList{background:#fff;border:1px solid #e5e5df;border-radius:17px}
+.rankingRow:first-child{background:#fff3b1}
+.tabs button{background:#efeee8;color:#444;border:1px solid #e2e2dc;border-radius:12px}
+.tabs button.selected{background:#202226;color:#fff;border-color:#202226}
+.adminItem.active{background:#fff3b1}
+.adminPanel h2{color:#191b1e}
+/* CRITICAL architecture invariant: hidden screen overrides any display above */
+.hidden, .stage > .hidden, .app .hidden {display:none!important}
+@media (max-width:820px),(orientation:portrait){
+ .gamePanel{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto}
+ .gameSide{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .scoreBox{grid-column:1/-1;min-height:70px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:16px}
+ .scoreBox strong{margin:0;font-size:36px}
+ .timeTrack{width:25%}
+ .control{min-height:74px}
+ .gameToolbar{flex-wrap:wrap}
+ .info{flex-wrap:wrap;justify-content:flex-end}
+ .adminLayout{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .app{padding:13px;gap:12px}
+ .homePanel{gap:23px}
+ .homeTitle{font-size:53px}
+ .modeGrid{grid-template-columns:1fr;gap:13px}
+ .bigButton,.bigButton.pink{min-height:140px;flex-direction:row;align-items:center;gap:16px;font-size:28px}
+ .bigButton::after{display:none}
+ .modeIcon{width:44px;height:44px}
+ .panel{padding:19px;border-radius:22px}
+ .gamePanel{gap:12px}
+ .gameTitle{font-size:25px}
+ .stat{font-size:11px;padding:4px}
+ .clockGroup{padding:5px 6px 5px 12px}
+ .timer{font-size:30px}
+ .stopRound{height:38px;font-size:12px}
+ .stopRound span{font-size:12px}
+ .word{font-size:31px}
+ .forbidden span{font-size:16px;padding:7px}
+ .resultScore{font-size:73px}
+}
+@media(max-height:720px) and (orientation:landscape){
+ .app{padding:9px 17px;gap:7px}
+ .header{height:40px;min-height:40px}
+ .iconBtn{height:37px;width:37px;border-radius:11px}
+ .brand{font-size:18px}
+ .panel{padding:14px 22px;border-radius:21px}
+ .homePanel{gap:18px}
+ .homeTitle{font-size:57px}
+ .bigButton,.bigButton.pink{min-height:155px}
+ .modeIcon{width:50px;height:50px}
+ .gamePanel{gap:8px}
+ .gameToolbar{min-height:38px}
+ .gameTitle{font-size:24px}
+ .clockGroup{padding:4px 6px 4px 12px}
+ .timer{font-size:30px}
+ .stopRound{height:36px}
+ .playzone,.card,.card.pic{min-height:0}
+ .card{padding:8px 15px}
+ .word{font-size:clamp(29px,3.2vw,43px);margin-bottom:8px}
+ .forbidden span{font-size:clamp(14px,1.55vw,18px);padding:3px}
+ .gameSide{gap:9px}
+ .control{min-height:65px;font-size:20px}
+ .scoreBox{padding:8px 12px}
+ .scoreBox strong{font-size:32px;margin:3px auto}
+ .resultTitle{font-size:26px}
+ .resultScore{font-size:66px;margin:0}
+ .summary{margin:7px 0;gap:10px}
+ .resultTile{min-height:75px;gap:2px}
+ .resultTile strong{font-size:30px}
+ .resultDetail{max-height:110px}
+ .finishActions{margin:5px}
+}
+
+/* radical redesign 2026-11-05 */
+:root{
+  --bg0:#12151d;
+  --bg1:#191d29;
+  --bg2:#23293a;
+  --card:#fff9ef;
+  --card2:#fff3d9;
+  --line:#3a425d;
+  --text:#171923;
+  --muted:#77809b;
+  --yellow:#ffd548;
+  --yellow2:#ffbf1f;
+  --pink:#ff6188;
+  --blue:#56a8ff;
+  --green:#49d29f;
+  --red:#ff7a7a;
+  --shadow:0 18px 46px rgba(0,0,0,.35);
+  --inner:0 1px 0 rgba(255,255,255,.12);
+}
+html,body{background:
+  radial-gradient(circle at 15% 10%, rgba(255,213,72,.10) 0, rgba(255,213,72,0) 24%),
+  radial-gradient(circle at 85% 15%, rgba(86,168,255,.13) 0, rgba(86,168,255,0) 24%),
+  linear-gradient(180deg,var(--bg2) 0%, var(--bg1) 45%, var(--bg0) 100%) !important;
+  color:#fff !important;
+  font-family:"Avenir Next Rounded","Avenir Next","Segoe UI","Trebuchet MS",sans-serif !important;
+}
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:999px;filter:blur(8px);opacity:.35}
+body::before{width:260px;height:260px;background:rgba(255,213,72,.16);left:-60px;top:18vh}
+body::after{width:320px;height:320px;background:rgba(86,168,255,.14);right:-70px;bottom:8vh}
+*{box-sizing:border-box}
+.hidden{display:none !important}
+.app{max-width:1320px !important;padding:24px !important;gap:22px !important}
+.header{height:76px !important;min-height:76px !important;padding:0 6px;display:flex;align-items:center;justify-content:space-between;border-radius:24px;background:rgba(20,24,35,.55);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow)}
+.headerLeft{gap:16px !important;padding-left:8px}
+.brand{font-size:29px !important;font-weight:900 !important;letter-spacing:.08em !important;color:#fff8e8 !important;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.22)}
+.brand::after{content:"";display:block;font-size:10px;font-weight:700;letter-spacing:.32em;color:#9da6c6;text-transform:uppercase;margin-top:2px}
+.iconBtn{width:52px !important;height:52px !important;border-radius:16px !important;background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05)) !important;color:#fff7df !important;border:1px solid rgba(255,255,255,.14) !important;box-shadow:inset var(--inner), 0 10px 18px rgba(0,0,0,.2) !important}
+.iconBtn:hover{transform:translateY(-2px);background:linear-gradient(180deg, rgba(255,255,255,.17), rgba(255,255,255,.06)) !important}
+.stage{display:flex;flex:1;min-height:0}
+.panel{width:100%;min-width:0;background:rgba(24,29,41,.66) !important;border:1px solid rgba(255,255,255,.08) !important;border-radius:34px !important;box-shadow:var(--shadow) !important;padding:28px !important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0) 26%)}
+.homePanel{display:flex !important;flex-direction:column;justify-content:center;align-items:center;gap:34px !important;padding:34px !important}
+.homeTitle{margin:0 !important;font-size:clamp(54px,7.6vw,100px) !important;line-height:.95 !important;font-weight:950 !important;letter-spacing:-.08em !important;color:#fffaf0 !important;text-shadow:0 8px 18px rgba(0,0,0,.28)}
+.homeTitle::after{content:"Choisis ton jeu";display:block;margin-top:16px;font-size:14px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#9ea7c7}
+.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:26px !important;width:min(100%,980px) !important}
+.bigButton,.bigButton.pink{position:relative;isolation:isolate;min-height:320px !important;padding:28px !important;display:flex !important;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;border-radius:34px !important;border:3px solid rgba(0,0,0,.18) !important;color:#16171d !important;box-shadow:0 18px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.55) !important;overflow:hidden;transition:transform .16s ease, box-shadow .16s ease !important}
+.bigButton{background:linear-gradient(145deg,#ffd94c 0%, #ffc129 100%) !important}
+.bigButton.pink{background:linear-gradient(145deg,#5db5ff 0%, #7f92ff 100%) !important;color:#fff !important}
+.bigButton::before{content:"";position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.22);z-index:-1}
+.bigButton::after{content:"Jeu de mots interdits";position:absolute;left:28px;bottom:24px;transform:translateY(100%);font-size:14px;font-weight:800;letter-spacing:.04em;opacity:.75;color:rgba(0,0,0,.72)}
+.bigButton.pink::after{content:"Dessine. Fais deviner.";color:rgba(255,255,255,.84)}
+.bigButton:hover{transform:translateY(-4px) rotate(-.4deg) !important;box-shadow:0 22px 36px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.58) !important}
+.bigButton span,.bigButton.pink span{display:block;font-size:clamp(38px,4.5vw,56px);font-weight:950;letter-spacing:-.07em;line-height:.9;margin-bottom:22px;text-transform:uppercase}
+.modeIcon{width:90px !important;height:90px !important;padding:18px;border-radius:24px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.35);color:inherit;stroke-width:1.8 !important;margin-bottom:auto}
+.gamePanel{display:grid !important;grid-template-columns:1fr !important;grid-template-rows:auto 1fr auto !important;gap:22px !important;min-height:calc(100dvh - 160px) !important;padding:24px !important}
+.gameToolbar{grid-column:1 !important;display:grid !important;grid-template-columns:auto 1fr auto !important;gap:18px;align-items:center;padding:0 !important;border-bottom:none !important}
+.gameTitle{justify-self:start;background:linear-gradient(180deg,#31384d,#252b3a) !important;color:#fff8e9 !important;border:1px solid rgba(255,255,255,.1) !important;padding:16px 22px !important;border-radius:20px !important;font-size:clamp(24px,3vw,38px) !important;font-weight:950 !important;letter-spacing:-.06em !important;box-shadow:0 10px 16px rgba(0,0,0,.18)}
+.info{display:flex !important;justify-content:center;align-items:center;gap:14px !important;flex-wrap:wrap}
+.stat{padding:12px 16px !important;border-radius:18px !important;background:rgba(255,255,255,.08) !important;border:1px solid rgba(255,255,255,.08) !important;color:#f7f8fc !important;font-size:15px !important;font-weight:800 !important;letter-spacing:.02em !important;box-shadow:inset var(--inner)}
+.clockGroup{display:flex !important;align-items:center;gap:12px;padding:10px 12px 10px 18px !important;border-radius:22px !important;background:linear-gradient(180deg,#0f1220,#1a2030) !important;border:2px solid rgba(255,213,72,.35) !important;box-shadow:0 12px 18px rgba(0,0,0,.25) !important}
+.clockLabel{display:none !important}
+.timer{font-size:clamp(38px,4vw,56px) !important;color:var(--yellow) !important;font-weight:950 !important;letter-spacing:-.07em !important;text-shadow:0 0 18px rgba(255,213,72,.18)}
+.timer.urgent{color:#ff8f75 !important;text-shadow:0 0 18px rgba(255,143,117,.22)}
+.stopRound{width:auto !important;height:54px !important;padding:0 16px !important;gap:10px;border-radius:16px !important;background:linear-gradient(180deg,#ff6d77,#ea4e58) !important;color:#fff !important;border:0 !important;box-shadow:0 12px 18px rgba(234,78,88,.24) !important}
+.stopRound svg{stroke:#fff !important}
+.stopRound span{display:inline !important;font-size:15px !important;font-weight:900 !important;letter-spacing:.03em !important;text-transform:uppercase}
+.playzone{grid-column:1 !important;display:flex !important;align-items:center !important;justify-content:center !important;min-height:0 !important;padding:4px 0}
+.playzone::before{content:"";position:absolute;inset:8% 10%;border-radius:38px;background:radial-gradient(circle at center, rgba(255,213,72,.12) 0, rgba(255,213,72,0) 65%);filter:blur(6px)}
+.card,.card.pic{position:relative;width:min(100%,980px) !important;min-height:440px !important;background:linear-gradient(180deg,var(--card) 0%, var(--card2) 100%) !important;border:4px solid #171923 !important;border-radius:38px !important;box-shadow:0 24px 0 rgba(13,15,23,.36), 0 28px 42px rgba(0,0,0,.28) !important;padding:34px 34px 28px !important;color:var(--text) !important;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.card::before,.card.pic::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,.48), rgba(255,255,255,0) 35%);pointer-events:none}
+.word{margin:0 0 30px !important;font-size:clamp(48px,6vw,90px) !important;line-height:.94 !important;color:#1d2029 !important;font-weight:950 !important;letter-spacing:-.08em !important;text-shadow:none !important}
+.card.pic .word{font-size:clamp(58px,7vw,106px) !important;margin:0 !important}
+.forbidden{width:min(100%,520px) !important;display:flex !important;flex-direction:column;gap:10px !important;align-items:center !important}
+.forbidden span{width:100%;padding:12px 16px !important;background:#fff !important;border:2px solid #1f2330;border-radius:16px !important;color:#3e4454 !important;font-size:clamp(19px,2vw,26px) !important;font-weight:800 !important;line-height:1.15 !important;box-shadow:0 4px 0 rgba(31,35,48,.14);border-bottom:none !important}
+.introOverlay{position:absolute !important;inset:0 !important;z-index:3;display:flex;align-items:center;justify-content:center;background:rgba(16,20,29,.72) !important;border-radius:34px !important;backdrop-filter:blur(4px)}
+.introInner{width:min(100%,560px);padding:34px 28px;border-radius:28px;background:linear-gradient(180deg,#22283a,#171b27);border:2px solid rgba(255,255,255,.08);box-shadow:var(--shadow);text-align:center}
+.introInner h2{margin:0 0 22px !important;font-size:clamp(34px,4vw,56px) !important;color:#fff8ec !important;font-weight:950 !important;letter-spacing:-.06em !important}
+.nameInput,.field{width:100% !important;border-radius:18px !important;border:2px solid rgba(255,255,255,.08) !important;background:#f8f9fc !important;color:#171923 !important;padding:16px 18px !important;font-size:18px !important;font-weight:700}
+.nameInput{text-align:center !important;margin-bottom:12px !important}
+.playerOptions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px !important;margin:12px 0 6px !important}
+.playerOptions button{padding:10px 14px !important;border-radius:14px !important;border:2px solid rgba(255,255,255,.08) !important;background:#303852 !important;color:#fff2bf !important;font-weight:800 !important}
+.error{min-height:22px !important;color:#ff9292 !important;font-size:13px !important;font-weight:700}
+.primary,.secondary{min-height:58px !important;padding:14px 22px !important;border-radius:18px !important;font-size:16px !important;font-weight:900 !important;letter-spacing:.02em !important;text-transform:uppercase;border:0 !important}
+.primary{background:linear-gradient(180deg,var(--yellow),var(--yellow2)) !important;color:#171923 !important;box-shadow:0 10px 16px rgba(255,191,31,.22), 0 5px 0 rgba(153,108,0,.4) !important}
+.secondary{background:linear-gradient(180deg,#39415b,#2a3043) !important;color:#fff8e3 !important;box-shadow:0 10px 16px rgba(0,0,0,.18), 0 5px 0 rgba(13,15,23,.28) !important}
+.primary:active,.secondary:active,.control:active,.iconBtn:active,.bigButton:active,.stopRound:active{transform:translateY(2px) !important;box-shadow:0 3px 0 rgba(0,0,0,.28) !important}
+.gameSide{grid-column:1 !important;display:grid !important;grid-template-columns:260px 1fr 1fr !important;gap:18px !important;align-items:stretch !important}
+.scoreBox{display:flex !important;flex-direction:column;justify-content:center;align-items:center;padding:18px !important;border-radius:28px !important;background:linear-gradient(180deg,#242b3d,#1a1f2c) !important;border:2px solid rgba(255,255,255,.08) !important;color:#aab2cf !important;box-shadow:var(--shadow);font-size:12px !important;font-weight:800 !important;letter-spacing:.24em !important;text-transform:uppercase}
+.scoreBox strong{display:block !important;margin:10px 0 14px !important;font-size:clamp(58px,6vw,84px) !important;line-height:.9 !important;color:#fff6d2 !important;font-weight:950 !important;letter-spacing:-.09em !important}
+.timeTrack{width:100%;height:10px !important;border-radius:999px !important;background:#111523 !important;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.timeFill{height:100% !important;background:linear-gradient(90deg,var(--yellow),#ff8a61) !important}
+.control{display:flex !important;align-items:center;justify-content:center;min-height:130px !important;padding:20px !important;border-radius:30px !important;border:3px solid rgba(23,25,35,.45) !important;font-size:clamp(23px,2.8vw,34px) !important;font-weight:950 !important;letter-spacing:-.06em !important;box-shadow:0 18px 24px rgba(0,0,0,.22) !important;position:relative;overflow:hidden}
+.control::before{content:"";position:absolute;inset:auto auto -34px -24px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.18)}
+.control.yes{background:linear-gradient(140deg,#4fe0a6 0%, #1fbf85 100%) !important;color:#082b1f !important}
+.control.no{background:linear-gradient(140deg,#ff7a7a 0%, #ff5d6f 100%) !important;color:#fff8fc !important}
+#finish{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:12px !important;padding:36px 24px !important;text-align:center}
+#finish::before{content:"★";display:flex;align-items:center;justify-content:center;width:92px;height:92px;border-radius:50%;background:linear-gradient(180deg,var(--yellow),var(--yellow2));color:#151821;font-size:44px;font-weight:900;box-shadow:0 14px 24px rgba(255,191,31,.3), 0 5px 0 rgba(153,108,0,.42)}
+.resultTitle{margin:0 !important;font-size:clamp(32px,4.2vw,56px) !important;font-weight:950 !important;letter-spacing:-.06em !important;color:#fff9ef !important}
+#finishName{margin-top:0 !important;font-size:18px !important;color:#aab3cf !important;font-weight:800 !important}
+.resultScore{font-size:clamp(92px,11vw,150px) !important;line-height:.94 !important;color:var(--yellow) !important;font-weight:950 !important;letter-spacing:-.10em !important;text-shadow:0 10px 22px rgba(255,191,31,.14) !important}
+#finish>div[style*="text-align:center"]{font-size:13px !important;font-weight:900 !important;letter-spacing:.24em !important;color:#a9b1cc !important;text-transform:uppercase}
+.summary{display:grid !important;grid-template-columns:repeat(2,minmax(180px,250px)) !important;gap:18px !important;width:min(100%,560px) !important;margin:18px 0 10px !important}
+.resultTile{min-height:132px !important;display:flex !important;align-items:center;justify-content:center;flex-direction:column;gap:7px !important;border-radius:28px !important;background:linear-gradient(180deg,#252c3e,#1a1f2c) !important;border:2px solid rgba(255,255,255,.08) !important;color:#c7cee3 !important;box-shadow:var(--shadow) !important}
+.resultTile strong{font-size:48px !important;line-height:1 !important;font-weight:950 !important;letter-spacing:-.06em !important;color:#fff7df !important}
+.resultTile span{font-size:12px !important;font-weight:900 !important;letter-spacing:.20em !important;text-transform:uppercase !important}
+.resultTile svg{color:#ffda56 !important}
+.resultDetail{width:min(100%,600px) !important;max-height:min(280px,34vh) !important;border-radius:24px !important;overflow:hidden !important;border:2px solid rgba(255,255,255,.08) !important;background:#fffaf1 !important;box-shadow:var(--shadow) !important;text-align:left !important}
+.detailHead{display:flex !important;align-items:center;justify-content:space-between;padding:16px 18px !important;background:linear-gradient(180deg,#ffeeb8,#ffd85a) !important;border-bottom:2px solid rgba(23,25,35,.14) !important}
+.detailHead h3{margin:0 !important;font-size:16px !important;color:#1c1f28 !important;font-weight:900 !important;letter-spacing:.04em !important;text-transform:uppercase}
+.detailClose{width:34px !important;height:34px !important;border-radius:12px !important;background:#1d2231 !important;border:0 !important;color:#fff !important;font-size:24px !important;line-height:1 !important;display:flex !important;align-items:center;justify-content:center}
+.detailWords{overflow:auto !important;padding:0 18px !important}
+.detailWord{display:flex !important;gap:18px !important;border-bottom:1px solid rgba(23,25,35,.08) !important;padding:13px 0 !important;color:#202430 !important;font-size:16px !important;font-weight:700 !important}.detailWord:last-child{border-bottom:0 !important}
+.detailWord span:first-child{min-width:20px !important;color:#7b859d !important;font-size:12px !important;font-weight:900 !important}
+.finishActions,.buttons{display:flex !important;flex-wrap:wrap;justify-content:center;gap:14px !important;margin-top:14px !important}
+.tableWrap{width:min(100%,720px) !important;margin:12px auto 0;border-radius:26px !important;overflow:hidden;border:2px solid rgba(255,255,255,.08) !important;background:rgba(255,255,255,.06) !important;box-shadow:var(--shadow) !important}
+.tableRow{display:grid !important;grid-template-columns:72px 1fr 110px !important;gap:12px !important;align-items:center;padding:16px 18px !important;border-bottom:1px solid rgba(255,255,255,.08) !important;color:#fffaf0 !important}.tableRow:last-child{border-bottom:0 !important}.tableRow.head{background:rgba(255,213,72,.13) !important;color:#ffd963 !important;font-size:12px !important;font-weight:900 !important;letter-spacing:.20em !important;text-transform:uppercase}.tableRow b{font-size:17px !important}.rankBadge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:linear-gradient(180deg,#39415c,#24293a);color:#fff0b7;font-weight:900}
+.lockScreen,.adminPanel{color:#fff9ef !important}
+.lockScreen h2,.adminPanel h2{font-size:34px;font-weight:950;letter-spacing:-.05em;margin-top:0;color:#fff8ec}
+.lockScreen p,.small.muted{color:#aab3cd !important}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px}.tabs button{padding:12px 16px;border-radius:16px;border:2px solid rgba(255,255,255,.08);background:#252b3d;color:#fff6db;font-weight:800}.tabs button.selected{background:linear-gradient(180deg,var(--yellow),var(--yellow2));color:#171923}
+.adminLayout{display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:18px}.adminList,.adminForm,.editorBox,.recordEditor,.backupBox{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.08);border-radius:24px;padding:18px}.adminItem{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px}.adminItem.active{background:rgba(255,213,72,.14)}.adminItem button{flex:1;text-align:left;background:none;border:0;color:#fff;font-weight:800}.adminItem span{color:#ffd75a;font-weight:900}.adminActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.field{margin-top:8px;margin-bottom:10px}.delete{background:linear-gradient(180deg,#ff7a7a,#ff5d6f)!important;color:#fff!important}.tableWrap .buttons{justify-content:flex-start}
+@media (max-width:980px){
+  .modeGrid{grid-template-columns:1fr !important}
+  .gameToolbar{grid-template-columns:1fr !important;justify-items:start}
+  .info{justify-content:flex-start !important}
+  .gameSide{grid-template-columns:1fr !important}
+  .scoreBox strong{font-size:58px !important}
+  .control{min-height:90px !important}
+}
+@media (max-width:700px){
+  .app{padding:14px !important}
+  .header{height:68px !important;min-height:68px !important}
+  .brand{font-size:24px !important}.brand::after{display:none}
+  .panel{padding:18px !important;border-radius:24px !important}
+  .homeTitle{font-size:52px !important}
+  .bigButton,.bigButton.pink{min-height:220px !important}
+  .modeIcon{width:72px !important;height:72px !important}
+  .bigButton span{font-size:36px !important}
+  .gameTitle{font-size:22px !important;padding:12px 16px !important}
+  .timer{font-size:34px !important}
+  .stopRound{height:48px !important}
+  .card,.card.pic{min-height:300px !important;padding:22px 18px !important;border-radius:28px !important}
+  .word{font-size:38px !important}
+  .card.pic .word{font-size:54px !important}
+  .forbidden span{font-size:18px !important;padding:10px 12px !important}
+  .summary{grid-template-columns:1fr !important;width:100% !important}
+  .resultTile{min-height:98px !important}
+  .adminLayout{grid-template-columns:1fr}
+}
+
+/* CORRECTIFS DE STRUCTURE — priorité absolue aux écrans masqués */
+#home.hidden, #game.hidden, #finish.hidden, #ranking.hidden,
+#adminLock.hidden, #admin.hidden, #homeBtn.hidden,
+#readyOverlay.hidden, #resultDetail.hidden,
+.hidden { display: none !important; }
+
+/* Accueil : panneaux entièrement isolés, libellés toujours contenus */
+#home:not(.hidden){display:flex !important;width:100%;}
+#game:not(.hidden){display:grid !important;width:100%;}
+#finish:not(.hidden){display:flex !important;width:100%;}
+#home .modeGrid { width:min(100%,960px) !important; min-width:0; }
+#home .bigButton { width:100%;min-width:0;max-width:100%;overflow:hidden !important;
+  display:flex !important; align-items:flex-start; justify-content:space-between;
+  padding:clamp(20px,2.7vw,32px) !important; }
+#home .bigButton span { display:block;max-width:100%;margin:0 !important;
+  white-space:normal;overflow-wrap:anywhere;word-break:normal;
+  font-size:clamp(25px,3.4vw,49px) !important;line-height:1.03 !important;
+  letter-spacing:-.065em !important; }
+#home .bigButton::after {display:none !important;}
+#home .modeIcon {flex-shrink:0;}
+@media(max-width:700px){#home .bigButton span{font-size:clamp(24px,7vw,40px) !important;}}
+
+/* Gestion robuste des longs mots dans les cartes */
+#card .word {max-width:100%;overflow-wrap:anywhere;word-break:normal;hyphens:auto;}
+#card .forbidden {min-width:0;max-width:100%;}
+#card .forbidden span {max-width:100%;overflow-wrap:anywhere;}
+
+/* PROTECTION ABSOLUE DE LA NAVIGATION : ne jamais afficher deux écrans. */
+[hidden], main[hidden], .panel[hidden], button[hidden], section[hidden],
+#home[hidden], #game[hidden], #finish[hidden], #ranking[hidden],
+#adminLock[hidden], #admin[hidden] { display:none !important; }
+/* L'accueil reste uniquement un écran de sélection. */
+#home:not([hidden]){display:flex !important;}
+#home .homeTitle::after {content:none !important;}
+#home .modeGrid{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;min-width:0;max-width:100%;}
+#home .bigButton{min-width:0;max-width:100%;overflow:hidden !important;gap:18px !important;}
+#home .bigButton span{display:block;max-width:100%;width:100%;font-size:clamp(23px,2.7vw,40px) !important;line-height:1.03 !important;white-space:normal !important;overflow-wrap:anywhere !important;letter-spacing:-.055em !important;hyphens:auto;}
+#home .bigButton .modeIcon{flex-shrink:0;}
+/* Les tuiles s'adaptent au 4:3 paysage comme au mobile. */
+@media(max-width:950px){#home .modeGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}#home .bigButton span{font-size:clamp(22px,3vw,32px) !important;}}
+@media(max-width:600px){#home .modeGrid{grid-template-columns:1fr !important;}#home .bigButton{min-height:175px !important;}#home .bigButton span{font-size:32px !important;}}
+/* Les listes internes à l'administration sont elles aussi masquées sans ambiguïté. */
+section.hidden, div.hidden, button.hidden{display:none !important;}
+
+/* Motion and hint tiles — progressive enhancement */
+#stopRound{gap:0!important;min-width:92px;justify-content:center}
+#stopRound span{display:block!important}
+.forbidden{display:flex!important;flex-direction:column!important;gap:9px!important;align-items:stretch!important}
+.forbidden .forbiddenHint{
+  display:block;width:100%;min-height:40px;padding:10px 16px;
+  border:2px solid #252936;border-radius:15px;
+  background:#fffaf3;color:#343a49;
+  font-size:clamp(17px,2vw,25px);font-weight:800;
+  box-shadow:0 4px 0 rgba(31,35,48,.15);
+  cursor:pointer;transition:background .23s ease,border-color .23s ease,color .23s ease,box-shadow .23s ease,transform .23s ease;
+}
+.forbidden .forbiddenHint:focus-visible{outline:3px solid #ffd548;outline-offset:3px}
+.forbidden .forbiddenHint.released{
+  background:transparent!important;border-color:transparent!important;
+  box-shadow:none!important;color:#343a49!important;
+  transform:scale(.98);
+}
+.resultDetail{
+  display:flex!important;
+  max-height:0!important;opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(-20px) scale(.985);margin:0!important;
+  transition:max-height .42s cubic-bezier(.2,.8,.2,1), opacity .32s ease, transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s linear .42s!important;
+}
+.resultDetail.open{
+  max-height:min(280px,34vh)!important;opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateY(0) scale(1);margin:8px 0!important;
+  transition:max-height .42s cubic-bezier(.2,.8,.2,1), opacity .32s ease, transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s!important;
+}
+.resultTile{transition:transform .22s ease, background .22s ease, border-color .22s ease!important}
+.resultTile:active{transform:scale(.97)}
+#card{transition:transform .22s cubic-bezier(.25,.7,.25,1),opacity .22s ease!important}
+@media(prefers-reduced-motion:reduce){.resultDetail,.resultDetail.open,.forbidden .forbiddenHint,.resultTile,#card{transition:none!important}}
+
+/* Responsive edition: portrait phones, compact landscape phones, 4:3 tablets. */
+:root{color-scheme:dark}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.app,.stage,.panel{min-width:0}
+button,input,select{max-width:100%}
+#home[hidden],#game[hidden],#finish[hidden],#ranking[hidden],#adminLock[hidden],#admin[hidden],.hidden{display:none!important}
+/* Let long words wrap instead of escaping their containers. */
+.word,.bigButton span,.homeTitle,.detailWord,.tableRow,.adminItem,.gameTitle{overflow-wrap:anywhere;word-break:normal}
+.bigButton,.bigButton.pink{min-width:0}
+.bigButton span,.bigButton.pink span{max-width:100%;font-size:clamp(25px,3.3vw,51px)!important;line-height:1.05!important}
+.gamePanel{min-width:0}
+.forbiddenHint{touch-action:manipulation}
+@media (max-width: 760px) {
+  html,body{min-height:100%;height:auto}
+  body{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .app{min-height:100dvh!important;height:auto!important;max-width:100%!important;padding:12px 12px max(16px,env(safe-area-inset-bottom))!important;gap:10px!important;display:flex;flex-direction:column}
+  .header{flex:0 0 auto;min-height:56px!important;height:56px!important;padding:0 7px!important;border-radius:18px!important}
+  .headerLeft{padding-left:4px!important;gap:8px!important}
+  .brand{font-size:19px!important;letter-spacing:.055em!important}
+  .brand::after{display:none!important}
+  .iconBtn{width:40px!important;height:40px!important;border-radius:13px!important;flex-shrink:0}
+  .iconBtn svg{width:19px;height:19px}
+  .stage{display:block!important;min-height:0!important;flex:1 1 auto;width:100%}
+  .panel{padding:16px!important;border-radius:23px!important;overflow:visible!important;min-width:0}
+  /* Start screen is its own layout, not an overlay on the game. */
+  #home.homePanel{min-height:calc(100dvh - 100px);display:flex!important;flex-direction:column!important;gap:24px!important;justify-content:center!important;padding:24px 16px!important}
+  .homeTitle{font-size:clamp(43px,11vw,66px)!important;line-height:1!important;text-align:center}
+  .homeTitle::after{font-size:10px!important;letter-spacing:.22em!important;margin-top:12px!important}
+  .modeGrid{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;width:100%!important}
+  .bigButton,.bigButton.pink{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:17px!important;width:100%!important;min-height:134px!important;padding:20px!important;border-radius:25px!important;overflow:hidden!important}
+  .bigButton::before{width:140px!important;height:140px!important}
+  .bigButton::after{display:none!important}
+  .modeIcon{width:68px!important;height:68px!important;min-width:68px!important;margin:0!important;padding:13px!important;border-radius:18px!important}
+  .bigButton span,.bigButton.pink span{font-size:clamp(29px,8.1vw,44px)!important;line-height:1.02!important;letter-spacing:-.055em!important;margin:0!important;min-width:0!important;overflow-wrap:anywhere}
+  /* During play, the card is full-width and controls form a two-action dock beneath it. */
+  #game.gamePanel{min-height:0!important;display:flex!important;flex-direction:column!important;gap:13px!important;padding:14px!important;overflow:visible!important}
+  .gameToolbar{display:flex!important;flex-wrap:wrap!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+  .gameTitle{font-size:clamp(21px,5.6vw,28px)!important;padding:11px 15px!important;border-radius:15px!important;flex:0 1 auto!important}
+  .info{display:flex!important;flex-direction:row!important;gap:8px!important;align-items:center!important;justify-content:flex-end!important;flex:1 1 auto!important;min-width:0!important}
+  .info>.stat{display:none!important}
+  .clockGroup{margin-left:auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:7px!important;padding:5px 6px 5px 10px!important;border-radius:15px!important}
+  .timer{font-size:clamp(26px,7.1vw,36px)!important;letter-spacing:-.055em!important}
+  .stopRound{min-width:0!important;width:auto!important;height:37px!important;padding:0 10px!important;border-radius:12px!important}
+  .stopRound span{font-size:11px!important}
+  #game .playzone{position:relative!important;flex:none!important;display:flex!important;min-height:0!important;touch-action:pan-y!important;padding:0!important;align-items:stretch!important}
+  #game .card,#game .card.pic{width:100%!important;min-height:0!important;overflow:visible!important;box-shadow:0 9px 0 rgba(13,15,23,.27),0 15px 23px rgba(0,0,0,.2)!important;border-width:3px!important;border-radius:26px!important;padding:22px 17px!important}
+  #game .card:not(.pic){gap:0!important}
+  #game .word{font-size:clamp(29px,8.2vw,46px)!important;line-height:1.08!important;margin:0 0 18px!important;max-width:100%}
+  #game .card.pic{min-height:210px!important;padding:32px 18px!important}
+  #game .card.pic .word{font-size:clamp(39px,11vw,64px)!important;margin:0!important}
+  #game .forbidden{width:100%!important;max-width:100%!important;gap:7px!important}
+  #game .forbidden .forbiddenHint{width:100%!important;min-width:0!important;min-height:0!important;padding:8px 11px!important;border-radius:11px!important;font-size:clamp(15px,4.35vw,20px)!important;line-height:1.13!important;overflow-wrap:anywhere!important;box-shadow:0 2px 0 rgba(31,35,48,.14)!important}
+  #game .forbidden .forbiddenHint.released{box-shadow:none!important}
+  .introOverlay{position:absolute!important;inset:0!important;border-radius:25px!important;padding:8px!important;overflow:auto!important}
+  .introInner{width:100%!important;max-height:100%!important;overflow-y:auto!important;padding:16px 12px!important;border-radius:20px!important}
+  .introInner h2{font-size:clamp(25px,7vw,37px)!important;margin-bottom:13px!important}
+  .nameInput{padding:12px 13px!important;font-size:16px!important}
+  #beginBtn{min-height:46px!important;margin-top:5px!important}
+  #game .gameSide{width:100%!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important;align-items:stretch!important;position:relative!important;z-index:1!important}
+  #game .scoreBox{grid-column:1 / -1!important;display:flex!important;flex-direction:row!important;gap:13px!important;justify-content:space-between!important;align-items:center!important;min-height:58px!important;padding:12px 15px!important;border-radius:16px!important;font-size:11px!important}
+  #game .scoreBox strong{font-size:36px!important;margin:0!important}
+  #game .timeTrack{width:30%!important;min-width:50px!important;height:7px!important}
+  #game .control{min-width:0!important;min-height:74px!important;padding:12px 6px!important;border-radius:18px!important;border-width:2px!important;font-size:clamp(17px,5.4vw,24px)!important;letter-spacing:-.035em!important;white-space:normal!important}
+  /* Result view scrolls naturally; expanded word lists never push content offscreen. */
+  #finish{min-height:calc(100dvh - 100px)!important;max-height:none!important;overflow:visible!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:10px!important;padding:22px 15px!important}
+  #finish::before{width:58px!important;height:58px!important;font-size:30px!important}
+  .resultTitle{font-size:clamp(26px,7vw,38px)!important;line-height:1.08!important}
+  #finishName{font-size:15px!important}
+  .resultScore{font-size:clamp(66px,21vw,104px)!important}
+  .summary{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;gap:9px!important;margin:12px 0 5px!important}
+  .resultTile{min-width:0!important;min-height:94px!important;border-radius:20px!important;padding:10px 4px!important}
+  .resultTile strong{font-size:38px!important}
+  .resultTile span{font-size:10px!important}
+  .resultDetail{width:100%!important;max-height:0!important}
+  .resultDetail.open{max-height:260px!important}
+  .finishActions{width:100%;display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important;margin-top:10px!important}
+  .finishActions .primary,.finishActions .secondary{min-width:0;padding:12px 10px!important;font-size:13px!important}
+  /* Leaderboard / administrator become stacked, scrollable screens. */
+  #ranking,#admin,#adminLock{min-height:calc(100dvh - 100px)!important;overflow:visible!important}
+  #ranking .resultTitle{font-size:27px!important}
+  .tableWrap{width:100%!important;max-width:100%!important;overflow-x:auto!important}
+  .tableRow{grid-template-columns:40px minmax(0,1fr) 75px!important;gap:8px!important;padding:11px 10px!important;font-size:13px!important}
+  .tableRow b{font-size:14px!important}
+  .rankBadge{height:32px!important;width:32px!important}
+  .adminPanel h2,.lockScreen h2{font-size:28px!important}
+  .adminLayout{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+  .adminList{max-height:220px!important;overflow-y:auto!important}
+  .tabs{display:flex!important;gap:8px!important;flex-wrap:wrap!important}
+  .tabs button{font-size:12px!important;padding:9px 10px!important}
+  .adminForm{min-width:0!important}
+  .field{font-size:16px!important}
+}
+/* Small landscape smartphones: maintain vertical scrolling instead of squashing the card. */
+@media (max-width: 920px) and (max-height: 500px) and (orientation: landscape){
+  .app{padding:8px!important;gap:8px!important}
+  .header{height:46px!important;min-height:46px!important}
+  #game.gamePanel{padding:10px!important;gap:12px!important}
+  #game .card,#game .card.pic{min-height:220px!important}
+  #game .gameSide{grid-template-columns:1fr 1fr!important}
+  #game .scoreBox{grid-column:1/-1!important}
+}
+/* Slightly larger portrait tablets can reuse the mobile stacked composition. */
+@media (min-width:761px) and (max-width:900px) and (orientation:portrait){
+  #game.gamePanel{display:flex!important;flex-direction:column!important;min-height:0!important}
+  #game .gameSide{display:grid!important;grid-template-columns:1fr 1fr!important}
+  #game .scoreBox{grid-column:1/-1!important}
+  #game .playzone,#game .card{min-height:380px!important}
+}
+
+/* Screen isolation: always wins over responsive layout rules. */
+#home[hidden],#game[hidden],#finish[hidden],#ranking[hidden],#adminLock[hidden],#admin[hidden],.stage > main.hidden{display:none!important}
+
+/* Spatial layout: use the available height, keep actions above the safe area. */
+:root{--bottom-room:clamp(14px,2.5vh,26px)}
+.app{min-height:100svh!important;min-height:100dvh!important}
+.stage{flex:1 1 auto;min-height:0}
+#game.gamePanel{min-height:max(580px,calc(100dvh - 130px))!important;grid-template-rows:auto minmax(0,1fr) auto!important;align-content:stretch;padding-bottom:var(--bottom-room)!important}
+#game .playzone{min-height:0!important;height:100%;align-self:stretch}
+#game .card,#game .card.pic{height:100%;min-height:0!important}
+#game .gameSide{align-self:end}
+/* The layout for phones uses the vertical space between HUD and bottom dock. */
+@media (max-width:760px) and (orientation:portrait){
+  .app{min-height:100dvh!important;padding-bottom:max(12px,env(safe-area-inset-bottom))!important}
+  .stage{display:flex!important;flex-direction:column!important;flex:1 1 auto!important}
+  #game.gamePanel{
+    flex:1 0 auto!important;
+    width:100%;
+    min-height:max(610px,calc(100dvh - 90px - env(safe-area-inset-bottom)))!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:clamp(13px,2vh,22px)!important;
+    padding:clamp(14px,2vh,22px)!important;
+    padding-bottom:clamp(16px,2.8vh,28px)!important;
+  }
+  #game .gameToolbar{flex:0 0 auto!important}
+  #game .playzone{flex:1 1 auto!important;min-height:310px!important;height:auto!important;align-items:stretch!important}
+  #game .card,#game .card.pic{height:100%!important;min-height:310px!important;flex:1 1 auto!important}
+  #game .gameSide{flex:0 0 auto!important;margin-top:auto!important;align-self:stretch!important}
+  #game .forbidden{gap:clamp(7px,1.2vh,12px)!important}
+  #game .forbidden .forbiddenHint{padding-block:clamp(9px,1.4vh,15px)!important}
+}
+/* Tablet landscape keeps the card visually dominant and bottom actions aligned. */
+@media (min-width:761px) and (orientation:landscape){
+  #game.gamePanel{min-height:calc(100dvh - 136px)!important;padding-bottom:clamp(18px,3vh,32px)!important}
+  #game .playzone{display:flex!important;align-self:stretch!important}
+  #game .card,#game .card.pic{flex:1!important;min-height:0!important}
+}
+@media(max-height:670px) and (orientation:landscape){
+  #game.gamePanel{min-height:540px!important}
+}
+
+/* V3 — right-hand game controls on landscape tablets; larger, aligned counters */
+@media (min-width:761px) and (orientation:landscape) {
+  #game.gamePanel:not([hidden]) {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) clamp(205px,24vw,280px)!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    column-gap:clamp(16px,2.3vw,30px)!important;
+    row-gap:16px!important;
+    align-items:stretch!important;
+  }
+  #game .gameToolbar {
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    min-width:0!important;
+  }
+  #game .playzone {
+    grid-column:1!important;
+    grid-row:2!important;
+    min-width:0!important;
+    height:100%!important;
+  }
+  #game .gameSide {
+    grid-column:2!important;
+    grid-row:2!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:minmax(100px,1fr) minmax(82px,.85fr) minmax(82px,.85fr)!important;
+    gap:clamp(11px,1.8vh,18px)!important;
+    width:100%!important;
+    min-width:0!important;
+    height:100%!important;
+    margin:0!important;
+    align-self:stretch!important;
+  }
+  #game .gameSide .scoreBox {
+    grid-column:1!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    height:100%!important;
+    padding:14px!important;
+  }
+  #game .scoreBox strong {font-size:clamp(48px,5vw,76px)!important}
+  #game .timeTrack {width:100%!important;max-width:190px!important}
+  #game .control {
+    grid-column:1!important;
+    width:100%!important;
+    min-width:0!important;
+    height:100%!important;
+    min-height:0!important;
+    padding:12px 8px!important;
+    font-size:clamp(21px,2.35vw,30px)!important;
+    line-height:1.1!important;
+    text-align:center!important;
+    overflow-wrap:anywhere!important;
+  }
+  #game .info>.stat {
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:45px!important;
+    padding:12px 16px!important;
+    font-size:clamp(14px,1.35vw,18px)!important;
+    font-weight:850!important;
+  }
+}
+@media (max-width:760px) and (orientation:portrait) {
+  #game .gameToolbar {display:flex!important;flex-direction:column!important;align-items:stretch!important}
+  #game .info {
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+    width:100%!important;
+  }
+  #game .info>.stat {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-width:0!important;
+    padding:11px 7px!important;
+    min-height:45px!important;
+    font-size:clamp(13px,3.8vw,17px)!important;
+    font-weight:850!important;
+  }
+  #game .clockGroup {
+    grid-column:1/-1!important;
+    justify-self:stretch!important;
+    width:100%!important;
+    margin:0!important;
+    justify-content:space-between!important;
+    padding:7px 12px!important;
+  }
+  #game .control {
+    min-height:clamp(78px,11vh,106px)!important;
+    font-size:clamp(17px,5vw,23px)!important;
+    line-height:1.1!important;
+  }
+}
+@media (min-width:761px) and (max-height:620px) and (orientation:landscape) {
+  #game.gamePanel:not([hidden]) {min-height:530px!important}
+}
+/* Keep the navigation of the two games independent. */
+#home[hidden],#game[hidden],#finish[hidden],#ranking[hidden],#adminLock[hidden],#admin[hidden] {display:none!important}
+
+
+/* V5: coherent gold palette, consistently readable ranking and admin selections */
+:root{--yellow:#f7da42!important;--yellow2:#f7da42!important;--yellow-deep:#d7b62c!important}
+.rankingRow:first-child{background:#f7da42!important;color:#171923!important}
+.rankingRow:first-child span{color:#171923!important;font-weight:850!important}
+.adminItem.active{background:#f7da42!important;color:#171923!important}
+.adminItem.active button,.adminItem.active span{color:#171923!important}
+.tabs button.selected{background:#f7da42!important;color:#171923!important;border-color:#f7da42!important}
+.detailHead{background:#f7da42!important;color:#171923!important}
+.primary{background:#f7da42!important;color:#171923!important}
+.bigButton:not(.pink){background:#f7da42!important;color:#171923!important}
+#resultDetail{color:#171923!important}
+
+/* V7 visual corrections */
+:root{--yellow:#d49f18!important;--yellow2:#c48a0a!important;--yellow-deep:#a86f00!important}
+body,html{background:#f5f5f7!important}
+.header{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important}
+.headerLeft,.headerRight{background:transparent!important}
+#settingsBtn,#homeBtn{background:#fff!important;border:1px solid #e5e6ea!important;box-shadow:0 3px 12px rgba(20,20,30,.025)!important;color:#51545d!important}
+#settingsBtn svg,#homeBtn svg{display:block;margin:auto}
+.bigButton:not(.pink){background:linear-gradient(180deg,var(--yellow) 0%, var(--yellow2) 100%)!important;color:#fff!important;border-color:#c8920d!important}
+.bigButton:not(.pink) .modeIcon,.bigButton:not(.pink) span{color:#fff!important}
+.bigButton:not(.pink){text-shadow:0 1px 0 rgba(0,0,0,.08)}
+.bigButton:not(.pink):hover{box-shadow:0 15px 34px rgba(194,138,10,.18)!important}
+.primary,.tabs button.selected,.detailHead,.rankingRow:first-child,.adminItem.active{background:var(--yellow)!important;border-color:var(--yellow)!important}
+.primary,.tabs button.selected,.rankingRow:first-child,.adminItem.active,.detailHead,.primary *,.tabs button.selected *,.rankingRow:first-child *,.adminItem.active *,.detailHead *{color:#fff!important}
+/* Right column aligned flush right on tablet/desktop */
+@media (min-width:761px){
+  #game.gamePanel:not([hidden]){grid-template-columns:minmax(0,1fr) 280px!important;column-gap:24px!important}
+  #game .gameSide{grid-column:2!important;justify-self:end!important;align-self:stretch!important;width:280px!important;max-width:280px!important;margin-left:auto!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:minmax(110px,1fr) minmax(92px,.86fr) minmax(92px,.86fr)!important;gap:16px!important}
+  #game .gameSide .scoreBox,#game .gameSide .control{width:100%!important;min-width:0!important;margin:0!important}
+  #game .gameToolbar{grid-template-columns:auto 1fr!important;display:grid!important;align-items:start!important}
+  #game .info{justify-self:end!important;justify-content:flex-end!important;flex-wrap:wrap!important}
+}
+/* Mobile keeps full-width buttons */
+@media (max-width:760px){
+  #game .gameSide{width:100%!important;max-width:none!important}
+}
+/* Uniform darker gold anywhere a selection highlight appears */
+.rankingRow:first-child{background:var(--yellow)!important}
+.adminItem.active{background:var(--yellow)!important}
+.tabs button.selected{background:var(--yellow)!important}
+.detailHead{background:var(--yellow)!important}
+.primary{background:var(--yellow)!important}
+#resultDetail{color:#171923!important}
+
+/* V8 — original dark backdrop restored, flat orange-yellow accents */
+:root{--yellow:#d19a00!important;--yellow2:#d19a00!important;--yellow-deep:#a96500!important}
+html,body{
+  background:#161b28!important;
+  color:#fff!important;
+}
+body{
+  background:radial-gradient(circle at 85% 10%,rgba(40,51,76,.40),transparent 42%),#161b28!important;
+}
+.header{background:transparent!important;border:0!important;box-shadow:none!important}
+#homeBtn,#settingsBtn{background:#242a38!important;border:1px solid #384252!important;color:#fff!important;box-shadow:none!important}
+.bigButton:not(.pink){background:#d19a00!important;background-image:none!important;border-color:#ba7000!important;color:#fff!important}
+.bigButton:not(.pink) .modeIcon,.bigButton:not(.pink) span{color:#fff!important;stroke:#fff!important}
+.bigButton:not(.pink)::before{background:rgba(255,255,255,.08)!important}
+.bigButton:not(.pink):hover{box-shadow:0 16px 28px rgba(0,0,0,.20)!important}
+.primary,.tabs button.selected,.detailHead,.rankingRow:first-child,.adminItem.active{
+  background:#d19a00!important;
+  background-image:none!important;
+  border-color:#d19a00!important;
+}
+.primary,.tabs button.selected,.detailHead,.rankingRow:first-child,.adminItem.active,
+.primary *, .tabs button.selected *, .detailHead *, .rankingRow:first-child *, .adminItem.active *{color:#fff!important}
+
+
+/* V11 — landscape widescreen 16:9 optimization (4:3 and portrait keep prior layout) */
+@media (min-width:900px) and (min-aspect-ratio:3/2) and (orientation:landscape) {
+  :root { --wide-margin:clamp(12px,2.1vh,24px); }
+  html,body { min-height:100%; }
+  .app {
+    width:100%!important;
+    max-width:1680px!important;
+    min-height:100dvh!important;
+    padding:var(--wide-margin) clamp(20px,2.7vw,48px)!important;
+    gap:clamp(8px,1.5vh,16px)!important;
+  }
+  .header {
+    height:clamp(38px,6vh,54px)!important;
+    min-height:clamp(38px,6vh,54px)!important;
+    padding:0!important;
+    border-radius:0!important;
+  }
+  .stage { flex:1 1 auto!important; min-height:0!important; align-items:stretch!important; }
+  .panel { border-radius:clamp(18px,2vw,28px)!important; }
+  #home.homePanel:not([hidden]) {
+    min-height:calc(100dvh - 2 * var(--wide-margin) - 70px)!important;
+    gap:clamp(18px,3vh,36px)!important;
+    padding:clamp(10px,2vh,28px)!important;
+    justify-content:center!important;
+  }
+  #home .homeTitle { font-size:clamp(58px,8vh,104px)!important; }
+  #home .modeGrid {
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:min(100%,1250px)!important;
+    gap:clamp(16px,2vw,30px)!important;
+  }
+  #home .bigButton,#home .bigButton.pink {
+    min-height:clamp(190px,36vh,340px)!important;
+    padding:clamp(22px,2.5vw,40px)!important;
+  }
+  #home .modeIcon { width:clamp(68px,6vw,95px)!important;height:clamp(68px,6vw,95px)!important; }
+
+  #game.gamePanel:not([hidden]) {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) clamp(210px,23vw,320px)!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    gap:clamp(10px,1.6vh,22px) clamp(16px,2vw,30px)!important;
+    min-height:calc(100dvh - 2 * var(--wide-margin) - 66px)!important;
+    padding:clamp(14px,2vw,30px)!important;
+    padding-bottom:clamp(15px,2.3vh,28px)!important;
+    align-items:stretch!important;
+  }
+  #game .gameToolbar {
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    padding:0 0 clamp(7px,1.2vh,13px)!important;
+    min-height:0!important;
+  }
+  #game .gameTitle { font-size:clamp(22px,2.4vw,33px)!important; }
+  #game .info {
+    display:flex!important;justify-content:flex-end!important;align-items:center!important;
+    flex-wrap:nowrap!important;gap:clamp(5px,.8vw,13px)!important;
+  }
+  #game .info>.stat { min-height:36px!important;padding:8px 12px!important;font-size:clamp(12px,1.1vw,17px)!important; }
+  #game .clockGroup { padding:0 0 0 10px!important; margin:0!important; }
+  #game .timer { font-size:clamp(27px,3vw,43px)!important; }
+  #game .playzone {
+    grid-column:1!important;grid-row:2!important;display:flex!important;
+    min-width:0!important;min-height:0!important;height:100%!important;align-self:stretch!important;
+  }
+  #game .card,#game .card.pic {
+    flex:1 1 auto!important;min-height:0!important;height:100%!important;
+    padding:clamp(12px,2vh,28px) clamp(20px,3vw,48px)!important;
+  }
+  #game .word {font-size:clamp(38px,4vw,68px)!important;}
+  #game .card.pic .word {font-size:clamp(46px,5.5vw,82px)!important;}
+  #game .forbidden {gap:clamp(1px,.5vh,8px)!important;}
+  #game .forbidden span {padding:clamp(4px,.75vh,10px) 8px!important;font-size:clamp(16px,1.6vw,23px)!important;}
+  #game .gameSide {
+    grid-column:2!important;grid-row:2!important;justify-self:end!important;align-self:stretch!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:minmax(85px,1.05fr) minmax(65px,.84fr) minmax(65px,.84fr)!important;
+    width:100%!important;max-width:none!important;height:100%!important;
+    gap:clamp(8px,1.6vh,18px)!important;margin:0!important;
+  }
+  #game .gameSide .scoreBox,#game .gameSide .control {width:100%!important;height:100%!important;margin:0!important;min-height:0!important;}
+  #game .gameSide .scoreBox {padding:clamp(9px,1.2vh,17px)!important;}
+  #game .scoreBox strong {font-size:clamp(40px,5vh,70px)!important;margin:2px auto 8px!important;}
+  #game .control {font-size:clamp(20px,2.15vw,31px)!important;padding:8px!important;}
+  #finish:not([hidden]),#ranking:not([hidden]),#adminLock:not([hidden]),#admin:not([hidden]) {width:100%!important;}
+  #finish:not([hidden]) {min-height:calc(100dvh - 2 * var(--wide-margin) - 70px)!important;}
+}
+@media (min-width:900px) and (min-aspect-ratio:3/2) and (max-height:650px) {
+  #game.gamePanel:not([hidden]) { min-height:calc(100dvh - 92px)!important; }
+  #game .gameSide {grid-template-rows:minmax(80px,1fr) repeat(2,minmax(62px,.85fr))!important;}
+  #game .card,#game .card.pic {padding:12px 22px!important;}
+  #game .forbidden span {padding:4px 6px!important;}
+  #game .scoreBox strong {font-size:clamp(38px,6vh,55px)!important;}
+}
+/* Isolation must override all breakpoint display rules. */
+.stage>main.hidden,.stage>main[hidden],#home[hidden],#game[hidden],#finish[hidden],#ranking[hidden],#adminLock[hidden],#admin[hidden] {display:none!important}
+
+
+/* V12: fullscreen action located beside the admin button on all screens */
+.headerTools{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-shrink:0;background:transparent!important}
+#fullscreenBtn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+#fullscreenBtn svg{display:block;flex:none}
+#fullscreenBtn[aria-pressed="true"]{background:#f2f2f4!important;border-color:#d8dbe1!important;color:#51545d!important}
+#fullscreenNotice{position:fixed;z-index:9999;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);max-width:min(92vw,440px);padding:12px 16px;background:#252a35;color:#fff;border:1px solid #4b5362;border-radius:12px;font-size:14px;line-height:1.4;box-shadow:0 6px 24px #0005;text-align:center;pointer-events:none}
+#fullscreenNotice[hidden]{display:none!important}
+:fullscreen{background:#161b28}
+@media(max-width:500px){.headerTools{gap:8px}}
+/* V13: fullscreen control is visually identical to the other header controls. */
+#homeBtn,#settingsBtn,#fullscreenBtn{
+ width:48px!important;height:48px!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ border-radius:15px!important;
+ border:1px solid #e5e6ea!important;
+ background:#fff!important;color:#51545d!important;
+ box-shadow:0 3px 12px rgba(20,20,30,.025)!important;
+ padding:0!important;vertical-align:middle!important;
+}
+#homeBtn[hidden],#homeBtn.hidden{display:none!important}
+#homeBtn svg,#settingsBtn svg,#fullscreenBtn svg{width:22px;height:22px;display:block;flex:none;margin:0 auto;stroke:currentColor}
+#homeBtn:hover,#settingsBtn:hover,#fullscreenBtn:hover{background:#f2f2f4!important}
+#fullscreenBtn[aria-pressed="true"]{background:#f2f2f4!important;color:#51545d!important;border-color:#d8dbe1!important}
+@media(max-width:760px){#homeBtn,#settingsBtn,#fullscreenBtn{width:44px!important;height:44px!important;border-radius:14px!important}}
+@media(max-width:420px){#homeBtn,#settingsBtn,#fullscreenBtn{width:40px!important;height:40px!important;border-radius:12px!important}}
+
+/* V14 — uniform dark controls, matching the original dark interface */
+#homeBtn,#settingsBtn,#fullscreenBtn,
+#homeBtn:hover,#settingsBtn:hover,#fullscreenBtn:hover,
+#fullscreenBtn[aria-pressed="true"]{
+  background:#242a38!important;
+  background-image:none!important;
+  border:1px solid #384252!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+#homeBtn:hover,#settingsBtn:hover,#fullscreenBtn:hover{background:#30384a!important}
+#homeBtn:active,#settingsBtn:active,#fullscreenBtn:active{background:#384256!important}
+#homeBtn[hidden],#homeBtn.hidden{display:none!important}
+</style></head><body><div class="app"><header class="header"><div class="headerLeft"><button id="homeBtn" hidden class="iconBtn hidden" aria-label="Accueil" title="Accueil"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></button></div><div class="headerTools"><button id="fullscreenBtn" class="iconBtn" type="button" aria-label="Activer le plein écran" title="Plein écran" aria-pressed="false"><svg id="fullscreenIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3"/></svg></button><button id="settingsBtn" class="iconBtn settings" title="Trois appuis rapides pour l’administration" aria-label="Administration"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 3.5h3l.55 2.1a6.9 6.9 0 0 1 1.55.65l1.92-1.02 2.12 2.12-1.03 1.9c.28.49.5 1 .66 1.56l2.08.54v3l-2.08.54c-.16.56-.38 1.08-.66 1.57l1.03 1.9-2.12 2.12-1.92-1.03c-.49.28-1 .5-1.55.66l-.55 2.08h-3l-.54-2.08a7 7 0 0 1-1.56-.66l-1.9 1.03-2.12-2.12 1.02-1.9a7 7 0 0 1-.65-1.57L2.5 13.5v-3l2.1-.54c.15-.56.37-1.07.65-1.56L4.23 6.5 6.35 4.38l1.9 1.02c.49-.28 1-.5 1.56-.65l.69-2.25Z"/><circle cx="12" cy="12" r="3.2"/></svg></button></div></header>
+<div class="stage"><main id="home" class="panel homePanel"><h1 class="homeTitle">ÉGALITÉ</h1><div class="modeGrid"><button class="bigButton" data-game="taboo"><svg class="modeIcon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 12.5h20c5.25 0 9.5 4.03 9.5 9s-4.25 9-9.5 9H24l-7.5 5.5V30.5H14c-5.25 0-9.5-4.03-9.5-9s4.25-9 9.5-9Z"/><path d="M13 34.5 35 13"/></svg><span>TABOU</span></button><button class="bigButton pink" data-game="pictionary"><svg class="modeIcon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 34 2-8L33 6a5 5 0 0 1 7 7L20 33l-9 1zM28 11l9 9"/><path d="M8 41h32"/></svg><span>PICTIONARY</span></button></div></main>
+<main id="game" hidden class="panel gamePanel hidden"><div class="gameToolbar"><button id="modeTitle" class="gameTitle" title="Voir les records">TABOU</button><div class="info"><span id="goodCount" class="stat">0 devinés</span><span id="passCount" class="stat">0 passés</span><div class="clockGroup"><span id="timer" class="timer" role="timer">01:30</span><button id="stopRound" class="stopRound" type="button" title="Stopper la manche" aria-label="Stopper la manche"><span>Stop</span></button></div></div></div><div class="playzone" id="playzone"><article id="card" class="card"><h2 class="word" id="word"></h2><div id="forbidden" class="forbidden"></div></article><div id="readyOverlay" class="introOverlay"><div class="introInner"><h2>90 SECONDES</h2><input id="playerName" class="nameInput" placeholder="Ton prénom" maxlength="30" autocomplete="off"><div id="playerOptions" class="playerOptions"></div><div id="nameError" class="error"></div><button id="beginBtn" class="primary">Valider</button></div></div></div><aside class="gameSide"><div class="scoreBox"><div>SCORE</div><strong id="scoreNow">0</strong><div class="timeTrack"><div id="timeFill" class="timeFill"></div></div></div><button id="correctBtn" class="control yes">DEVINÉ  +3</button><button id="passBtn" class="control no">PASSÉ  −1</button></aside></main>
+<main id="finish" hidden class="panel hidden"><h2 class="resultTitle">MANCHE TERMINÉE</h2><div id="finishName" style="text-align:center;font-weight:900"></div><div id="finalScore" class="resultScore">0</div><div style="text-align:center;font-weight:900">POINTS</div><div id="result" class="summary"><button id="showGuessed" type="button" class="resultTile" aria-expanded="false"><strong id="resultGood">0</strong><span>DEVINÉS</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 9 6 6 6-6"/></svg></button><button id="showPassed" type="button" class="resultTile" aria-expanded="false"><strong id="resultPassed">0</strong><span>PASSÉS</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 9 6 6 6-6"/></svg></button></div><div id="resultDetail" class="resultDetail" aria-live="polite"><div class="detailHead"><h3 id="detailTitle"></h3><button id="closeDetail" type="button" class="detailClose" aria-label="Fermer la liste">×</button></div><div id="detailWords" class="detailWords"></div></div><div class="buttons finishActions"><button id="viewRanking" class="secondary">Classement</button><button id="replay" class="primary">Rejouer</button></div></main>
+<main id="ranking" hidden class="panel hidden"><h2 class="resultTitle" id="rankMode">Classement</h2><div class="tableWrap" id="rankingList"></div><div class="buttons" style="margin-top:20px"><button class="secondary" id="rankingBack">Retour</button></div></main>
+<main id="adminLock" hidden class="panel hidden"><div class="lockScreen"><h2>Administration</h2><p>Code local nécessaire pour modifier les cartes et gérer les records.</p><input id="adminCode" class="field" type="password" placeholder="Code administrateur"><div id="adminError" class="error"></div><div class="buttons"><button id="adminEnter" class="primary">Entrer</button><button id="adminCancel" class="secondary">Annuler</button></div><p class="small muted">À la première ouverture, choisis un code. Il sera conservé sur cet appareil.</p></div></main>
+<main id="admin" hidden class="panel adminPanel hidden"><h2>Administration</h2><div class="tabs"><button data-tab="taboo" class="selected">Cartes Tabou</button><button data-tab="pictionary">Cartes Pictionary</button><button data-tab="ranks">Classements</button><button data-tab="players">Joueurs</button><button data-tab="backup">Sauvegarde</button></div><section id="adminCards"><div class="adminLayout"><div><div class="buttons" style="justify-content:flex-start;margin-bottom:10px"><button id="addCard" class="primary">Ajouter une carte</button></div><div id="adminList" class="adminList"></div></div><div id="adminEditor" class="adminForm"><label for="editWord">Mot à deviner</label><input id="editWord" class="field"><div id="forbiddenEditor"></div><div class="adminActions"><button id="saveCard" class="primary">Enregistrer</button><button id="deleteCard" class="secondary delete">Supprimer</button></div><p id="adminFeedback" class="small muted"></p></div></div></section><section id="adminRanks" class="hidden"><h3>Records Tabou</h3><div id="adminTabRanks" class="tableWrap"></div><h3>Records Pictionary</h3><div id="adminPicRanks" class="tableWrap"></div><div class="adminForm" style="margin:18px 0;max-width:520px"><h3>Modifier un record</h3><label for="recordPlayer">Joueur</label><select id="recordPlayer" class="field"></select><label for="recordMode">Jeu</label><select id="recordMode" class="field"><option value="taboo">Tabou</option><option value="pictionary">Pictionary</option></select><label for="recordScore">Meilleur score</label><input id="recordScore" class="field" type="number" step="0.5"><div id="recordFeedback" class="small muted"></div><div class="adminActions"><button id="saveRecord" class="primary">Enregistrer le record</button><button id="deleteRecord" class="secondary delete">Supprimer ce record</button></div></div><button id="clearRanks" class="secondary delete" style="margin-top:14px">Effacer tous les records</button></section><section id="adminPlayers" class="hidden"><h3>Tous les joueurs</h3><p class="small muted">Tous les profils créés sur cet appareil, même sans record. Modifier un prénom le change dans les deux classements.</p><div id="adminPlayerList" class="tableWrap playerRegistry"></div><div class="adminForm" style="margin-top:14px;max-width:480px"><label for="editPlayerName">Prénom du joueur</label><input id="editPlayerName" class="field" maxlength="30"><div id="playerAdminFeedback" class="small muted"></div><div class="adminActions"><button id="renamePlayer" class="primary">Renommer</button><button id="removePlayer" class="secondary delete">Supprimer le profil</button></div></div></section><section id="adminBackup" class="hidden"><p>Les cartes, les profils et les records sont conservés sur cet appareil. Exporte un fichier pour pouvoir les restaurer sur une autre tablette.</p><div class="buttons"><button id="exportData" class="primary">Exporter les données JSON</button><label class="secondary" style="cursor:pointer">Importer un fichier JSON<input id="importData" type="file" accept="application/json,.json" style="display:none"></label><button id="resetCards" class="secondary delete">Restaurer les 200 cartes initiales</button></div><p id="backupFeedback"></p></section><div class="buttons" style="margin-top:15px"><button id="adminExit" class="secondary">Fermer l’administration</button></div></main></div></div>
+<script>
+const tabooRows = [
+['Égalité','Parité','Équité','Justice','Équilibre','Similitude'],
+['Sexisme','Machisme','Misogynie','Préjugé','Discrimination','Domination'],
+['Féminisme','Émancipation','Militantisme','Libération','Revendication','Parité'],
+['Discrimination','Exclusion','Injustice','Ségrégation','Rejet','Marginalisation'],
+['Parité','Égalité','Équilibre','Moitié','Proportion','Représentation'],
+['Machisme','Misogynie','Domination','Chauvinisme','Supériorité','Arrogance'],
+['Misogynie','Machisme','Haine','Mépris','Hostilité','Aversion'],
+['Patriarcat','Domination','Pouvoir','Autorité','Hiérarchie','Suprématie'],
+['Stéréotype','Cliché','Préjugé','Caricature','Étiquette','Généralisation'],
+['Préjugé','Cliché','Stéréotype','A priori','Opinion','Jugement'],
+['Équité','Justice','Impartialité','Égalité','Traitement','Équilibre'],
+['Mixité','Mélange','Diversité','Cohabitation','Coexistence','Pluralité'],
+['Diversité','Variété','Pluralité','Différence','Richesse','Multiplicité'],
+['Inclusion','Intégration','Accueil','Appartenance','Ouverture','Participation'],
+['Émancipation','Libération','Indépendance','Autonomie','Affranchissement','Liberté'],
+['Sororité','Solidarité','Fraternité','Entraide','Alliance','Soutien'],
+['Fraternité','Solidarité','Sororité','Entraide','Union','Camaraderie'],
+['Solidarité','Entraide','Soutien','Union','Coopération','Assistance'],
+['Tolérance','Acceptation','Ouverture','Indulgence','Compréhension','Respect'],
+['Respect','Considération','Estime','Égards','Déférence','Courtoisie'],
+['Harcèlement','Persécution','Intimidation','Acharnement','Pression','Tourment'],
+['Consentement','Accord','Approbation','Permission','Acceptation','Autorisation'],
+['Emprise','Domination','Contrôle','Ascendant','Manipulation','Influence'],
+['Domination','Pouvoir','Autorité','Suprématie','Contrôle','Emprise'],
+['Manipulation','Influence','Tromperie','Contrôle','Emprise','Pression'],
+['Intimidation','Menace','Peur','Pression','Harcèlement','Terreur'],
+['Humiliation','Honte','Dégradation','Affront','Vexation','Mépris'],
+['Violence','Brutalité','Agression','Force','Maltraitance','Coups'],
+['Féminicide','Meurtre','Assassinat','Homicide','Crime','Conjoint'],
+['Cyberharcèlement','Internet','Intimidation','Réseaux','Insultes','Messages'],
+['Cybersexisme','Misogynie','Numérique','Discrimination','Internet','Réseaux'],
+['Objectification','Réification','Déshumanisation','Instrumentalisation','Chosification','Corps'],
+['Sexualisation','Érotisation','Sensualité','Désir','Corps','Apparence'],
+['Discrimination positive','Quotas','Compensation','Rattrapage','Priorité','Équité'],
+['Impunité','Sanction','Punition','Conséquence','Justice','Responsabilité'],
+['Culpabilisation','Reproche','Accusation','Faute','Honte','Remords'],
+['Chantage','Menace','Pression','Extorsion','Contrainte','Ultimatum'],
+['Jalousie','Envie','Rivalité','Possessivité','Suspicion','Méfiance'],
+['Possessivité','Jalousie','Contrôle','Exclusivité','Emprise','Domination'],
+['Confiance','Assurance','Croyance','Sécurité','Fiabilité','Sérénité'],
+['Plafond de verre','Barrière','Obstacle','Blocage','Frein','Limitation'],
+['Écart salarial','Disparité','Différence','Déséquilibre','Inégalité','Décalage'],
+['Charge mentale','Préoccupations','Responsabilités','Planification','Organisation','Surcharge'],
+['Congé parental','Interruption','Disponibilité','Absence','Pause','Maternité'],
+['Congé maternité','Naissance','Grossesse','Absence','Bébé','Accouchement'],
+['Congé paternité','Naissance','Bébé','Père','Absence','Travail'],
+['Travail domestique','Ménage','Corvées','Entretien','Foyer','Maison'],
+['Tâches ménagères','Corvées','Vaisselle','Lessive','Aspirateur','Nettoyage'],
+['Autocensure','Inhibition','Retenue','Réserve','Silence','Renoncement'],
+['Orientation scolaire','Choix','Études','Filière','Parcours','Métier'],
+['Ambition','Aspiration','Objectif','Réussite','Détermination','Rêve'],
+['Carrière','Profession','Parcours','Emploi','Évolution','Promotion'],
+['Promotion','Avancement','Progression','Augmentation','Nomination','Carrière'],
+['Recrutement','Embauche','Sélection','Candidature','Entretien','Emploi'],
+['Rémunération','Salaire','Paie','Traitement','Rétribution','Honoraires'],
+['Indépendance financière','Autonomie','Argent','Liberté','Revenus','Ressources'],
+['Précarité','Pauvreté','Instabilité','Fragilité','Insécurité','Vulnérabilité'],
+['Leadership','Direction','Autorité','Influence','Commandement','Gestion'],
+['Représentation','Présence','Délégation','Image','Symbole','Porte-parole'],
+['Quotas','Proportion','Pourcentage','Minimum','Répartition','Obligation'],
+['Virilité','Masculinité','Force','Puissance','Courage','Robustesse'],
+['Masculinité','Virilité','Homme','Force','Puissance','Identité'],
+['Féminité','Femme','Douceur','Grâce','Élégance','Délicatesse'],
+['Identité','Personnalité','Individualité','Appartenance','Caractère','Singularité'],
+['Norme sociale','Règle','Convention','Comportement','Usage','Attente'],
+['Pression sociale','Influence','Groupe','Contrainte','Regard','Jugement'],
+['Injonction','Ordre','Obligation','Commandement','Exigence','Pression'],
+['Apparence','Physique','Allure','Aspect','Image','Extérieur'],
+['Beauté','Charme','Esthétique','Grâce','Élégance','Splendeur'],
+['Pudeur','Réserve','Discrétion','Modestie','Retenue','Intimité'],
+['Complexe','Insécurité','Gêne','Défaut','Honte','Malaise'],
+['Body shaming','Moquerie','Corps','Humiliation','Physique','Poids'],
+['Virilisme','Machisme','Masculinité','Force','Domination','Puissance'],
+['Androcentrisme','Homme','Centralité','Masculin','Domination','Perspective'],
+['Langage inclusif','Écriture','Mots','Masculin','Féminin','Grammaire'],
+['Éducation genrée','Conditionnement','Socialisation','Apprentissage','Différenciation','Formatage'],
+['Socialisation','Intégration','Apprentissage','Groupe','Société','Interactions'],
+['Conditionnement','Influence','Apprentissage','Programmation','Réflexe','Habitude'],
+['Liberté','Indépendance','Autonomie','Émancipation','Choix','Droits'],
+['Autonomie','Indépendance','Liberté','Émancipation','Responsabilité','Initiative'],
+['Dignité','Respect','Honneur','Valeur','Considération','Fierté'],
+['Justice','Équité','Impartialité','Droit','Tribunal','Loi'],
+['Éducation','Enseignement','Instruction','Apprentissage','Formation','École'],
+['Égalité des chances','Équité','Opportunité','Réussite','Mérite','Accès'],
+['Droits des femmes','Émancipation','Égalité','Libertés','Citoyenneté','Conquêtes'],
+['Droit de vote','Élection','Suffrage','Bulletin','Urne','Électeur'],
+['Contraception','Pilule','Préservatif','Grossesse','Stérilet','Prévention'],
+['IVG','Avortement','Grossesse','Interruption','Embryon','Choix'],
+['Mariage forcé','Union','Obligation','Contrainte','Famille','Époux'],
+['Mariage','Union','Noces','Alliance','Cérémonie','Époux'],
+['Divorce','Séparation','Rupture','Désunion','Procédure','Tribunal'],
+['Couple','Duo','Partenaires','Amoureux','Relation','Union'],
+['Fidélité','Loyauté','Exclusivité','Engagement','Constance','Confiance'],
+['Séduction','Charme','Attirance','Flirt','Drague','Conquête'],
+['Harcèlement de rue','Sifflements','Interpellations','Intimidation','Import <REPLACE>','Drague'],
+['Culture du viol','Banalisation','Tolérance','Normalisation','Impunité','Culpabilisation'],
+['Intersectionnalité','Croisement','Cumul','Imbrication','Superposition','Combinaison'],
+['Charge émotionnelle','Écoute','Soutien','Empathie','Réconfort','Gestion'],
+['Déconstruction','Remise en question','Analyse','Critique','Transformation','Réflexion'],
+['Liberté d’expression','Opinion','Parole','Censure','Pensée','Discours']
+];
+tabooRows[94][4]='Importunité';
+const pictionary = ['Poupée','Poussette','Biberon','Tétine','Berceau','Couche','Peluche','Dînette','Casserole','Balai','Aspirateur','Éponge','Vaisselle','Tablier','Fer','Lessive','Machine','Marteau','Perceuse','Tournevis','Échelle','Scie','Brouette','Tracteur','Camion','Moto','Voiture','Avion','Fusée','Casque','Ballon','Raquette','Trophée','Médaille','Haltère','Gant','Kimono','Justaucorps','Chaussons','Sifflet','Maillot','Skateboard','Vélo','Surf','Patins','Robe','Jupe','Cravate','Costume','Talons','Baskets','Sac','Couronne','Diadème','Barbe','Moustache','Rasoir','Rouge à lèvres','Mascara','Parfum','Miroir','Peigne','Brosse','Bijou','Collier','Boucles d’oreilles','Vernis','Ciseaux','Aiguille','Dé à coudre','Mannequin','Princesse','Prince','Chevalier','Reine','Roi','Sorcière','Superhéros','Robot','Licorne','Dragon','Épée','Bouclier','Pompier','Policier','Médecin','Infirmière','Pilote','Cuisinier','Danseuse','Maçon','Secrétaire','Président','Arbitre','Juge','Scientifique','Astronaute','Photographe','Professeur','Bébé'];
+
+const $=id=>document.getElementById(id),ROUND_MS=90000,CARD_KEY='egalite_custom_cards_v2',SCORE_KEY='egalite_records_v1',PROFILE_KEY='egalite_profiles_v2',PIN_KEY='egalite_admin_pin_v1';
+const defaults={taboo:tabooRows.map(r=>({word:r[0],forbidden:r.slice(1,6)})),pictionary:pictionary.map(word=>({word,forbidden:[]}))};
+function load(k,fallback){try{let v=localStorage.getItem(k);return v?JSON.parse(v):structuredClone(fallback)}catch{return JSON.parse(JSON.stringify(fallback))}}
+function persist(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch{return false}}
+let cards=load(CARD_KEY,defaults);if(!cards||!Array.isArray(cards.taboo)||!Array.isArray(cards.pictionary))cards=structuredClone(defaults);
+let profiles=load(PROFILE_KEY,[]);if(!Array.isArray(profiles))profiles=[];
+let rankings=load(SCORE_KEY,{taboo:[],pictionary:[]});if(!rankings||!Array.isArray(rankings.taboo)||!Array.isArray(rankings.pictionary))rankings={taboo:[],pictionary:[]};
+// Migrate older scores into named profiles, keeping records.
+for(const mode of ['taboo','pictionary'])for(const entry of rankings[mode])if(entry.name&&!profiles.some(p=>p.toLocaleLowerCase('fr')===entry.name.toLocaleLowerCase('fr')))profiles.push(entry.name);
+// Migration des anciens profils Anonyme 1, Anonyme 2… : un seul record Anonyme par jeu.
+const legacyAnonymous=/^anonyme(?:\s+\d+)?$/i;
+for(const mode of ['taboo','pictionary']){
+  const oldEntries=rankings[mode].filter(r=>legacyAnonymous.test(String(r.name||'').trim()));
+  if(oldEntries.length){
+    const best=oldEntries.reduce((a,b)=>Number(b.score)>Number(a.score)?b:a);
+    rankings[mode]=rankings[mode].filter(r=>!legacyAnonymous.test(String(r.name||'').trim()));
+    rankings[mode].push({...best,name:'Anonyme'});
+  }
+}
+profiles=[...new Set(profiles.filter(n=>!legacyAnonymous.test(String(n).trim())).concat(
+  profiles.some(n=>legacyAnonymous.test(String(n).trim())) || rankings.taboo.some(r=>r.name==='Anonyme') || rankings.pictionary.some(r=>r.name==='Anonyme')?['Anonyme']:[]))];
+persist(SCORE_KEY,rankings);
+persist(PROFILE_KEY,profiles);
+let guessedWords=[],passedWords=[];let earnedPoints=0,hintsUsed=new Set(),game=null,deck=[],idx=0,correct=0,passed=0,active=false,locked=false,player='',endAt=0,ticker=null,delay=null,rankingGame='taboo',returnScreen='home',selection=null,adminMode='taboo',adminTab='taboo',timerClicks=[],chosenPlayer=null;
+function escapeName(n){return n.trim().replace(/\s+/g,' ')}
+function shuffle(a){let x=[...a];for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[j],x[i]]=[x[i],x[j]]}return x}
+function score(){return Math.round((earnedPoints-passed)*2)/2}
+function formatPoints(n){return Number(n).toLocaleString('fr-FR',{maximumFractionDigits:1})}
+function cardValue(){return Math.max(0.5,3-hintsUsed.size*0.5)}
+function stopClocks(){clearInterval(ticker);clearTimeout(delay);ticker=delay=null}
+function show(screen){
+  for(const id of ['home','game','finish','ranking','adminLock','admin']){
+    const element=$(id),isHidden=id!==screen;
+    element.hidden=isHidden;
+    element.classList.toggle('hidden',isHidden);
+    element.setAttribute('aria-hidden',String(isHidden));
+  }
+  const back=$('homeBtn');back.hidden=screen==='home';back.classList.toggle('hidden',screen==='home');
+}
+function home(){stopClocks();active=false;game=null;show('home')}
+function start(which){stopClocks();game=which;deck=shuffle(cards[which]).map(x=>({...x}));idx=correct=passed=0;earnedPoints=0;hintsUsed.clear();guessedWords=[];passedWords=[];active=locked=false;$('modeTitle').textContent=which==='taboo'?'TABOU':'PICTIONARY';$('readyOverlay').classList.remove('hidden');$('playerName').value='';$('nameError').textContent='';selection=null;updateNameChoices();render();updateTimer(ROUND_MS);show('game')}
+function updateTimer(ms){let n=Math.ceil(Math.max(0,ms)/1000);$('timer').textContent=String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');$('timer').classList.toggle('urgent',ms<=10000);$('timeFill').style.width=(100*Math.max(0,ms)/ROUND_MS)+'%'}
+function render(){if(idx>=deck.length){finish();return}let r=deck[idx];$('word').textContent=r.word;$('card').classList.toggle('pic',game==='pictionary');$('playzone').classList.toggle('tapOnly',game==='pictionary');$('forbidden').replaceChildren();hintsUsed.clear();if(game==='taboo')for(const w of r.forbidden){let n=document.createElement('button');n.type='button';n.className='forbiddenHint';n.textContent=w;const syncHint=()=>{const released=hintsUsed.has(w);n.classList.toggle('released',released);n.setAttribute('aria-pressed',String(released));n.setAttribute('aria-label',(released?'Réactiver l’interdiction : ':'Retirer l’interdiction : ')+w);$('correctBtn').textContent='DEVINÉ  +'+formatPoints(cardValue());};syncHint();n.addEventListener('click',()=>{if(!active||locked)return;if(hintsUsed.has(w))hintsUsed.delete(w);else hintsUsed.add(w);syncHint();});$('forbidden').append(n)}$('correctBtn').textContent='DEVINÉ  +'+formatPoints(cardValue());$('goodCount').textContent='Devinés : '+correct;$('passCount').textContent='Passés : '+passed;$('scoreNow').textContent=formatPoints(score());$('card').style.transform='';$('card').style.opacity='1'}
+function updateCounters(){$('goodCount').textContent='Devinés : '+correct;$('passCount').textContent='Passés : '+passed;$('scoreNow').textContent=formatPoints(score())}
+function nextAnonymous(){return 'Anonyme'}
+function nameRoot(s){return escapeName(s).replace(/\s+\d+$/,'').toLocaleLowerCase('fr')}
+function matches(s){return profiles.filter(n=>nameRoot(n)===nameRoot(s)).sort((a,b)=>a.localeCompare(b,'fr',{numeric:true}))}
+function nextName(s){const raw=escapeName(s).replace(/\s+\d+$/,'');const used=new Set(profiles.map(n=>n.toLocaleLowerCase('fr')));if(!used.has(raw.toLocaleLowerCase('fr')))return raw;let i=2;while(used.has((raw+' '+i).toLocaleLowerCase('fr')))i++;return raw+' '+i}
+function updateNameChoices(){const val=escapeName($('playerName').value),wrap=$('playerOptions');wrap.replaceChildren();selection=null;$('nameError').textContent='';if(!val)return;let items=matches(val);if(items.length){let label=document.createElement('div');label.style.width='100%';label.className='small muted';label.textContent='Profil déjà enregistré ? Choisis celui que tu veux reprendre :';wrap.append(label)}for(const name of items){const btn=document.createElement('button');btn.textContent=name;btn.onclick=()=>{selection=name;$('playerName').value=name;$('nameError').textContent='Profil existant : '+name;for(let b of wrap.querySelectorAll('button'))b.style.background=b===btn?'#f7da42':'#303852'};wrap.append(btn)}if(items.length){const name=nextName(val),btn=document.createElement('button');btn.textContent='＋ Nouveau : '+name;btn.onclick=()=>{selection='__NEW__';$('playerName').value=name;$('nameError').textContent='Nouveau profil : '+name;for(let b of wrap.querySelectorAll('button'))b.style.background=b===btn?'#f7da42':'#303852'};wrap.append(btn)}}
+function begin(){if(active||!game)return;let typed=escapeName($('playerName').value);const anonymous=!typed||/^anonyme(?:\s+\d+)?$/i.test(typed);if(anonymous){typed=nextAnonymous();selection='Anonyme'}const existing=profiles.find(p=>p.toLocaleLowerCase('fr')===typed.toLocaleLowerCase('fr'));if(existing&&!anonymous&&selection!==existing){$('nameError').textContent='Choisis le profil existant ou un nouveau prénom numéroté.';return}player=anonymous?'Anonyme':selection==='__NEW__'?typed:(existing||typed);if(!profiles.some(p=>p.toLocaleLowerCase('fr')===player.toLocaleLowerCase('fr'))){profiles.push(player);persist(PROFILE_KEY,profiles)}$('readyOverlay').classList.add('hidden');active=true;endAt=performance.now()+ROUND_MS;ticker=setInterval(()=>{const left=endAt-performance.now();updateTimer(left);if(left<=0)finish()},90)}
+function next(action){if(!active||locked||performance.now()>=endAt)return;locked=true;if(action==='correct'){correct++;earnedPoints+=cardValue();guessedWords.push(deck[idx].word)}else{passed++;passedWords.push(deck[idx].word)}updateCounters();$('card').style.transform=`translateY(${action==='correct'?'-110':'110'}px) rotate(${action==='correct'?'-2':'2'}deg)`;$('card').style.opacity='0';delay=setTimeout(()=>{delay=null;if(!active)return;idx++;locked=false;if(idx>=deck.length){finish();return}render()},160)}
+function saveResult(){let group=rankings[game];let found=group.find(x=>x.name.toLocaleLowerCase('fr')===player.toLocaleLowerCase('fr'));let entry={name:player,score:score(),good:correct,passed,date:new Date().toISOString()};if(!found)group.push(entry);else if(entry.score>found.score)Object.assign(found,entry);persist(SCORE_KEY,rankings)}
+function finish(early=false){if(!active)return;active=false;stopClocks();if(!early)updateTimer(0);saveResult();$('finalScore').textContent=formatPoints(score());$('finishName').textContent=player+' · '+(game==='taboo'?'TABOU':'PICTIONARY');$('resultGood').textContent=correct;$('resultPassed').textContent=passed;$('resultDetail').classList.remove('open');for(const id of ['showGuessed','showPassed'])$(id).setAttribute('aria-expanded','false');$('finish').querySelector('.resultTitle').textContent=early?'MANCHE ARRÊTÉE':'MANCHE TERMINÉE';show('finish')}
+function toggleWordList(kind){const panel=$('resultDetail'),button=$(kind==='good'?'showGuessed':'showPassed'),other=$(kind==='good'?'showPassed':'showGuessed');const closing=panel.classList.contains('open')&&button.getAttribute('aria-expanded')==='true';other.setAttribute('aria-expanded','false');button.setAttribute('aria-expanded',closing?'false':'true');panel.classList.toggle('open',!closing);if(closing)return;const words=kind==='good'?guessedWords:passedWords;$('detailTitle').textContent=kind==='good'?'Mots devinés':'Mots passés';const list=$('detailWords');list.replaceChildren();if(!words.length){const p=document.createElement('p');p.className='muted';p.textContent='Aucun mot';list.append(p)}else words.forEach((word,i)=>{const row=document.createElement('div');row.className='detailWord';const num=document.createElement('span');num.textContent=String(i+1).padStart(2,'0');const label=document.createElement('span');label.textContent=word;row.append(num,label);list.append(row)})}
+function stopRound(){if(!active)return;finish(true)}
+function fillRanks(container,which){let el=$(container);el.replaceChildren();let r=[...rankings[which]].sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name,'fr'));if(!r.length){el.textContent='Aucun record enregistré.';return}r.forEach((entry,i)=>{let row=document.createElement('div');row.className='rankingRow';for(const v of [String(i+1),entry.name,entry.score+' pts']){let sp=document.createElement('span');sp.textContent=v;row.append(sp)}el.append(row)})}
+function openRanking(which){if(active)return;rankingGame=which||game||'taboo';returnScreen=['finish','game'].find(s=>!$(s).classList.contains('hidden'))||'home';$('rankMode').textContent=(rankingGame==='taboo'?'TABOU':'PICTIONARY')+' · RECORDS';fillRanks('rankingList',rankingGame);show('ranking')}
+function enterAdmin(){if(active)return;$('adminCode').value='';$('adminError').textContent='';show('adminLock')}
+function confirmAdmin(){let pin=$('adminCode').value;if(!/^\d{4,8}$/.test(pin)){$('adminError').textContent='Saisis un code de 4 à 8 chiffres.';return}let saved=localStorage.getItem(PIN_KEY);if(saved&&saved!==pin){$('adminError').textContent='Code incorrect.';return}if(!saved)localStorage.setItem(PIN_KEY,pin);adminTab='taboo';switchAdmin('taboo');show('admin')}
+function switchAdmin(tab){adminTab=tab;for(const b of document.querySelectorAll('[data-tab]'))b.classList.toggle('selected',b.dataset.tab===tab);$('adminCards').classList.toggle('hidden',!['taboo','pictionary'].includes(tab));$('adminRanks').classList.toggle('hidden',tab!=='ranks');$('adminPlayers').classList.toggle('hidden',tab!=='players');$('adminBackup').classList.toggle('hidden',tab!=='backup');if(tab==='ranks'){fillRanks('adminTabRanks','taboo');fillRanks('adminPicRanks','pictionary');populateRecordPlayers()}else if(tab==='players'){renderPlayerRegistry()}else if(tab!=='backup'){adminMode=tab;selection=cards[tab].length?0:-1;renderAdminList()}}
+function allPlayers(){return [...new Set([...profiles,...rankings.taboo.map(r=>r.name),...rankings.pictionary.map(r=>r.name)].filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr',{numeric:true,sensitivity:'base'}))}
+function renderPlayerRegistry(){const names=allPlayers(),list=$('adminPlayerList');list.replaceChildren();if(chosenPlayer&&!names.includes(chosenPlayer))chosenPlayer=null;if(!chosenPlayer&&names.length)chosenPlayer=names[0];for(const name of names){const row=document.createElement('div');row.className='adminItem'+(chosenPlayer===name?' active':'');const button=document.createElement('button');button.textContent=name;button.onclick=()=>{chosenPlayer=name;renderPlayerRegistry()};row.append(button);for(const mode of ['taboo','pictionary']){const record=rankings[mode].find(r=>r.name===name);const sp=document.createElement('span');sp.className='small muted';sp.textContent=(mode==='taboo'?'T ':'P ')+(record?record.score+' pts':'—');row.append(sp)}list.append(row)}$('editPlayerName').value=chosenPlayer||'';$('renamePlayer').disabled=$('removePlayer').disabled=!chosenPlayer;$('playerAdminFeedback').textContent=names.length+' profil(s) enregistré(s).'}
+function renameSelectedPlayer(){if(!chosenPlayer)return;const old=chosenPlayer,name=escapeName($('editPlayerName').value);if(!name){$('playerAdminFeedback').textContent='Saisis un prénom.';return}if(allPlayers().some(p=>p!==old&&p.toLocaleLowerCase('fr')===name.toLocaleLowerCase('fr'))){$('playerAdminFeedback').textContent='Ce prénom existe déjà. Choisis un autre nom.';return}profiles=profiles.map(p=>p===old?name:p);for(const mode of ['taboo','pictionary'])rankings[mode].forEach(r=>{if(r.name===old)r.name=name});if(player===old)player=name;persist(PROFILE_KEY,profiles);persist(SCORE_KEY,rankings);chosenPlayer=name;renderPlayerRegistry();$('playerAdminFeedback').textContent='Prénom mis à jour dans les deux classements.'}
+function removeSelectedPlayer(){if(!chosenPlayer||!confirm('Supprimer '+chosenPlayer+' et ses records dans les deux jeux ?'))return;const old=chosenPlayer;profiles=profiles.filter(p=>p!==old);for(const mode of ['taboo','pictionary'])rankings[mode]=rankings[mode].filter(r=>r.name!==old);persist(PROFILE_KEY,profiles);persist(SCORE_KEY,rankings);chosenPlayer=null;renderPlayerRegistry();$('playerAdminFeedback').textContent='Profil et records supprimés.'}
+function populateRecordPlayers(){const sel=$('recordPlayer'),old=sel.value;sel.replaceChildren();for(const name of allPlayers()){const opt=document.createElement('option');opt.value=name;opt.textContent=name;sel.append(opt)}if(allPlayers().includes(old))sel.value=old;loadRecordEditor()}
+function loadRecordEditor(){$('recordFeedback').textContent='';const entry=rankings[$('recordMode').value]?.find(r=>r.name===$('recordPlayer').value);$('recordScore').value=entry?entry.score:''}
+function saveSelectedRecord(){const name=$('recordPlayer').value,mode=$('recordMode').value,value=$('recordScore').value.trim();if(!name||value===''||!Number.isFinite(Number(value))||Math.round(Number(value)*2)!==Number(value)*2){$('recordFeedback').textContent='Sélectionne un joueur et saisis un score par incréments de 0,5 point.';return}const group=rankings[mode],entry=group.find(r=>r.name===name);if(entry)entry.score=Number(value);else group.push({name,score:Number(value),good:0,passed:0,date:new Date().toISOString()});persist(SCORE_KEY,rankings);switchAdmin('ranks');$('recordPlayer').value=name;$('recordMode').value=mode;loadRecordEditor();$('recordFeedback').textContent='Record modifié.'}
+function deleteSelectedRecord(){const name=$('recordPlayer').value,mode=$('recordMode').value;if(!name||!confirm('Supprimer le record '+(mode==='taboo'?'Tabou':'Pictionary')+' de '+name+' ?'))return;rankings[mode]=rankings[mode].filter(r=>r.name!==name);persist(SCORE_KEY,rankings);switchAdmin('ranks');$('recordPlayer').value=name;$('recordMode').value=mode;loadRecordEditor();$('recordFeedback').textContent='Record supprimé, profil conservé.'}
+
+function renderAdminList(){let list=$('adminList');list.replaceChildren();cards[adminMode].forEach((item,i)=>{let row=document.createElement('div');row.className='adminItem'+(selection===i?' active':'');let btn=document.createElement('button');btn.textContent=(i+1)+'. '+item.word;btn.onclick=()=>{selection=i;renderAdminList()};row.append(btn);list.append(row)});$('adminFeedback').textContent=cards[adminMode].length+' cartes';renderAdminEditor()}
+function renderAdminEditor(){const item=cards[adminMode][selection];$('editWord').value=item?.word||'';$('deleteCard').disabled=!item;let area=$('forbiddenEditor');area.replaceChildren();if(adminMode==='taboo'){const label=document.createElement('label');label.textContent='5 mots interdits (un par champ)';area.append(label);for(let j=0;j<5;j++){let inp=document.createElement('input');inp.className='field';inp.placeholder='Mot interdit '+(j+1);inp.value=item?.forbidden?.[j]||'';inp.dataset.forbid=String(j);inp.style.margin='3px 0';area.append(inp)}}}
+function saveCard(){let word=$('editWord').value.trim();if(!word){$('adminFeedback').textContent='Le mot à deviner est obligatoire.';return}let forbidden=adminMode==='taboo'?[...document.querySelectorAll('[data-forbid]')].map(x=>x.value.trim()):[];if(adminMode==='taboo'&&forbidden.some(x=>!x)){$('adminFeedback').textContent='Renseigne les cinq mots interdits.';return}let item={word,forbidden};if(selection<0){cards[adminMode].push(item);selection=cards[adminMode].length-1}else cards[adminMode][selection]=item;persist(CARD_KEY,cards);renderAdminList();$('adminFeedback').textContent='Carte enregistrée.'}
+function deleteCard(){if(selection<0)return;if(!confirm('Supprimer cette carte ?'))return;cards[adminMode].splice(selection,1);selection=Math.min(selection,cards[adminMode].length-1);persist(CARD_KEY,cards);renderAdminList()}
+function exportData(){let blob=new Blob([JSON.stringify({version:2,cards,profiles,rankings},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='egalite-sauvegarde.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+async function importData(e){let file=e.target.files[0];if(!file)return;try{let data=JSON.parse(await file.text());if(!data.cards||!Array.isArray(data.cards.taboo)||!Array.isArray(data.cards.pictionary)||!Array.isArray(data.profiles)||!data.rankings)throw Error('Structure du fichier incorrecte');if(!confirm('Remplacer les cartes, profils et records locaux par ceux du fichier ?'))return;cards=data.cards;profiles=data.profiles;rankings=data.rankings;
+for(const mode of ['taboo','pictionary']){
+const oldEntries=rankings[mode].filter(r=>/^anonyme(?:\s+\d+)?$/i.test(String(r.name||'').trim()));
+if(oldEntries.length){const best=oldEntries.reduce((a,b)=>Number(b.score)>Number(a.score)?b:a);rankings[mode]=rankings[mode].filter(r=>!/^anonyme(?:\s+\d+)?$/i.test(String(r.name||'').trim()));rankings[mode].push({...best,name:'Anonyme'});}
+}
+const hasAnonymous=profiles.some(p=>/^anonyme(?:\s+\d+)?$/i.test(String(p).trim()))||rankings.taboo.some(r=>r.name==='Anonyme')||rankings.pictionary.some(r=>r.name==='Anonyme');
+profiles=[...new Set(profiles.filter(p=>!/^anonyme(?:\s+\d+)?$/i.test(String(p).trim())).concat(hasAnonymous?['Anonyme']:[]))];
+persist(CARD_KEY,cards);persist(PROFILE_KEY,profiles);persist(SCORE_KEY,rankings);$('backupFeedback').textContent='Import réussi.'}catch(err){$('backupFeedback').textContent='Import impossible : '+err.message}e.target.value=''}
+// Actions and navigation
+for(const btn of document.querySelectorAll('[data-game]'))btn.onclick=()=>start(btn.dataset.game);
+$('homeBtn').onclick=home;$('beginBtn').onclick=begin;$('playerName').addEventListener('input',updateNameChoices);$('correctBtn').onclick=()=>next('correct');$('passBtn').onclick=()=>next('pass');$('viewRanking').onclick=()=>openRanking(game);$('modeTitle').onclick=()=>openRanking(game);$('replay').onclick=()=>start(game);$('showGuessed').onclick=()=>toggleWordList('good');$('showPassed').onclick=()=>toggleWordList('passed');$('closeDetail').onclick=()=>{$('resultDetail').classList.remove('open');$('showGuessed').setAttribute('aria-expanded','false');$('showPassed').setAttribute('aria-expanded','false')};$('stopRound').onclick=stopRound;$('rankingBack').onclick=()=>show(returnScreen);
+$('settingsBtn').addEventListener('click',()=>{let now=performance.now();timerClicks=timerClicks.filter(t=>now-t<1100);timerClicks.push(now);if(timerClicks.length>=3){timerClicks=[];enterAdmin()}});
+$('adminEnter').onclick=confirmAdmin;$('adminCancel').onclick=home;$('adminExit').onclick=home;$('adminCode').addEventListener('keydown',e=>{if(e.key==='Enter')confirmAdmin()});for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>switchAdmin(b.dataset.tab);$('addCard').onclick=()=>{selection=-1;renderAdminList();$('editWord').focus()};$('saveCard').onclick=saveCard;$('deleteCard').onclick=deleteCard;$('clearRanks').onclick=()=>{if(confirm('Effacer les records des deux jeux ?')){rankings={taboo:[],pictionary:[]};persist(SCORE_KEY,rankings);switchAdmin('ranks')}};$('renamePlayer').onclick=renameSelectedPlayer;$('removePlayer').onclick=removeSelectedPlayer;$('recordPlayer').onchange=loadRecordEditor;$('recordMode').onchange=loadRecordEditor;$('saveRecord').onclick=saveSelectedRecord;$('deleteRecord').onclick=deleteSelectedRecord;$('exportData').onclick=exportData;$('importData').onchange=importData;$('resetCards').onclick=()=>{if(confirm('Restaurer les 200 cartes initiales ? Les records seront conservés.')){cards=structuredClone(defaults);persist(CARD_KEY,cards);switchAdmin('taboo')}};
+let gesture=null;const zone=$('playzone');zone.addEventListener('touchstart',e=>{gesture=active&&game==='taboo'&&e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY}:null},{passive:true});zone.addEventListener('touchend',e=>{if(!gesture||!active||game!=='taboo')return;const dx=e.changedTouches[0].clientX-gesture.x,dy=e.changedTouches[0].clientY-gesture.y;gesture=null;if(Math.abs(dy)>=45&&Math.abs(dy)>Math.abs(dx)*1.3)next(dy<0?'correct':'pass')},{passive:true});zone.addEventListener('touchcancel',()=>gesture=null);document.addEventListener('keydown',e=>{if(!active||game!=='taboo')return;if(e.key==='ArrowUp'){e.preventDefault();next('correct')}if(e.key==='ArrowDown'){e.preventDefault();next('pass')}});
+// Service worker only available on HTTPS or localhost; direct file:// still works offline as standalone HTML.
+if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+<script>
+/* Fullscreen uses an explicit tap: Android Chrome supports the Fullscreen API on eligible pages. */
+(function(){
+  const btn=document.getElementById('fullscreenBtn');
+  const icon=document.getElementById('fullscreenIcon');
+  const notice=document.createElement('div');
+  notice.id='fullscreenNotice';notice.hidden=true;notice.setAttribute('role','status');
+  document.body.appendChild(notice);
+  let noticeTimeout;
+  function notify(message){
+    notice.textContent=message;notice.hidden=false;
+    clearTimeout(noticeTimeout);
+    noticeTimeout=setTimeout(()=>{notice.hidden=true;},5000);
+  }
+  function isFullscreen(){return Boolean(document.fullscreenElement||document.webkitFullscreenElement);}
+  function sync(){
+    const active=isFullscreen();
+    btn.setAttribute('aria-pressed',String(active));
+    btn.setAttribute('aria-label',active?'Quitter le plein écran':'Activer le plein écran');
+    btn.title=active?'Quitter le plein écran':'Plein écran';
+    icon.innerHTML=active?'<path d="M8 3v5H3M16 3v5h5M3 16h5v5M21 16h-5v5"/>':'<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3"/>';
+  }
+  btn.addEventListener('click',async()=>{
+    try{
+      if(isFullscreen()){
+        const exit=document.exitFullscreen||document.webkitExitFullscreen;
+        if(!exit){notify('La sortie du plein écran est indisponible dans ce navigateur.');return;}
+        await exit.call(document);
+      }else{
+        const root=document.documentElement;
+        const enter=root.requestFullscreen||root.webkitRequestFullscreen;
+        if(!enter){notify('Plein écran non autorisé ici. Essayez Chrome ou une version installée du jeu.');return;}
+        await enter.call(root);
+      }
+    }catch(err){notify('Le navigateur bloque le plein écran pour ce fichier. Essayez depuis une page HTTPS ou une application installée.');}
+    sync();
+  });
+  document.addEventListener('fullscreenchange',sync);
+  document.addEventListener('webkitfullscreenchange',sync);
+  sync();
+})();
+</script>
+</body></html>
